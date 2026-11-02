@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import Link from "next/link";
+import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import type { ContactField, ContactResponse } from "@/app/api/contact/route";
 
@@ -9,7 +11,7 @@ type Status = "idle" | "sending" | "success" | "error" | "rate_limited";
 const inputClass =
   "mt-2 w-full rounded-lg border border-slate-700 bg-ink-900 px-4 py-3 text-slate-100 placeholder:text-slate-600 focus:border-neon";
 
-export function ContactForm({ dict }: { dict: Dictionary }) {
+export function ContactForm({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   const t = dict.contact;
   const [status, setStatus] = useState<Status>("idle");
   const [invalid, setInvalid] = useState<ContactField[]>([]);
@@ -82,6 +84,14 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
       <button type="submit" className="btn-primary w-full disabled:opacity-60" disabled={status === "sending"}>
         {status === "sending" ? t.sending : t.send}
       </button>
+
+      <p className="text-xs text-slate-500">
+        {t.privacyText}{" "}
+        <Link href={`/${locale}/datenschutz`} className="text-neon underline">
+          {t.privacyLink}
+        </Link>
+        .
+      </p>
 
       <p role="status" aria-live="polite" className="min-h-6 text-sm">
         {status === "success" && <span className="text-neon">{t.success}</span>}

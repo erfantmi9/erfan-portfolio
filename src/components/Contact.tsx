@@ -1,9 +1,10 @@
+import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { site } from "@/content/site";
 import { ContactForm } from "./ContactForm";
 import { Reveal } from "./Reveal";
 
-export function Contact({ dict }: { dict: Dictionary }) {
+export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const t = dict.contact;
   return (
     <section id="contact" aria-labelledby="contact-title" className="section">
@@ -21,7 +22,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
           </p>
         </Reveal>
         <Reveal delay={0.1}>
-          <ContactForm dict={dict} />
+          <ContactForm dict={dict} locale={locale} />
         </Reveal>
       </div>
     </section>

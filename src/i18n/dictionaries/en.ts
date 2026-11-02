@@ -109,6 +109,25 @@ export const en = {
       },
     ],
   },
+  availability: {
+    eyebrow: "Work & languages",
+    title: "Built for the Austrian market",
+    workTitle: "Work authorization & relocation",
+    workBody:
+      "I'm based in Iran and would need an Austrian work permit (e.g. Red-White-Red Card or EU Blue Card). I'm ready to relocate to Salzburg or Vienna, and my time zone is close to CET for remote or hybrid collaboration.",
+    facts: [
+      { label: "Target cities", value: "Salzburg · Vienna · Linz" },
+      { label: "Work model", value: "On-site, hybrid or remote" },
+      { label: "Start", value: "TODO: earliest start / notice period" },
+      { label: "Permit", value: "Employer support needed" },
+    ],
+    langTitle: "Languages",
+    languages: [
+      { name: "English", level: "TODO: confirm level (working language)" },
+      { name: "Persian", level: "Native" },
+      { name: "German", level: "A1 — learning actively, every day" },
+    ],
+  },
   experience: {
     eyebrow: "Experience & skills",
     title: "Tools I reach for",
@@ -143,6 +162,8 @@ export const en = {
     success: "Thanks! Your message is on its way.",
     error: "Something went wrong. Please try again or email me directly.",
     rateLimited: "Too many requests. Please try again in a few minutes.",
+    privacyText: "Your details are used only to reply to your message. See the",
+    privacyLink: "privacy policy",
     validation: {
       name: "Please enter your name (2–100 characters).",
       email: "Please enter a valid email address.",
@@ -152,6 +173,8 @@ export const en = {
   footer: {
     rights: "All rights reserved.",
     built: "Built with Next.js 15, TypeScript & Tailwind CSS.",
+    imprint: "Legal notice",
+    privacy: "Privacy policy",
     top: "Back to top",
   },
 };

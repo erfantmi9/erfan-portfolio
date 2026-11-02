@@ -111,6 +111,25 @@ export const de: Dictionary = {
       },
     ],
   },
+  availability: {
+    eyebrow: "Arbeit & Sprachen",
+    title: "Gemacht für den österreichischen Markt",
+    workTitle: "Arbeitserlaubnis & Umzug",
+    workBody:
+      "Ich lebe im Iran und benötige eine österreichische Arbeitserlaubnis (z. B. Rot-Weiß-Rot-Karte oder EU Blue Card). Ich bin bereit, nach Salzburg oder Wien zu ziehen, und meine Zeitzone liegt nah an MEZ für Remote- oder Hybrid-Zusammenarbeit.",
+    facts: [
+      { label: "Zielstädte", value: "Salzburg · Wien · Linz" },
+      { label: "Arbeitsmodell", value: "Vor Ort, hybrid oder remote" },
+      { label: "Start", value: "TODO: frühester Start / Kündigungsfrist" },
+      { label: "Genehmigung", value: "Unterstützung durch Arbeitgeber nötig" },
+    ],
+    langTitle: "Sprachen",
+    languages: [
+      { name: "Englisch", level: "TODO: Niveau bestätigen (Arbeitssprache)" },
+      { name: "Persisch", level: "Muttersprache" },
+      { name: "Deutsch", level: "A1 — lerne aktiv, täglich" },
+    ],
+  },
   experience: {
     eyebrow: "Erfahrung & Skills",
     title: "Meine Werkzeuge",
@@ -145,6 +164,8 @@ export const de: Dictionary = {
     success: "Danke! Deine Nachricht ist unterwegs.",
     error: "Etwas ist schiefgelaufen. Bitte versuche es erneut oder schreibe mir direkt per E-Mail.",
     rateLimited: "Zu viele Anfragen. Bitte versuche es in einigen Minuten erneut.",
+    privacyText: "Deine Angaben werden nur zur Beantwortung deiner Nachricht verwendet. Siehe",
+    privacyLink: "Datenschutzerklärung",
     validation: {
       name: "Bitte gib deinen Namen ein (2–100 Zeichen).",
       email: "Bitte gib eine gültige E-Mail-Adresse ein.",
@@ -154,6 +175,8 @@ export const de: Dictionary = {
   footer: {
     rights: "Alle Rechte vorbehalten.",
     built: "Gebaut mit Next.js 15, TypeScript & Tailwind CSS.",
+    imprint: "Impressum",
+    privacy: "Datenschutz",
     top: "Nach oben",
   },
 };

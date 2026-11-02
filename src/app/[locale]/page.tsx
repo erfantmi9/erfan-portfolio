@@ -8,6 +8,7 @@ import { Experience } from "@/components/Experience";
 import { BeyondWork } from "@/components/BeyondWork";
 import { Labs } from "@/components/Labs";
 import { Playground } from "@/components/Playground";
+import { Availability } from "@/components/Availability";
 import { Contact } from "@/components/Contact";
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
@@ -24,7 +25,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <Experience locale={locale} dict={dict} />
       <Playground dict={dict} />
       <BeyondWork dict={dict} />
-      <Contact dict={dict} />
+      <Availability dict={dict} />
+      <Contact locale={locale} dict={dict} />
     </>
   );
 }
