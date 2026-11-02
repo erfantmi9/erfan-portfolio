@@ -64,6 +64,18 @@ export default async function CaseStudyPage({ params }: PageProps) {
         </div>
       </dl>
 
+      <section aria-labelledby="metrics" className="mt-10">
+        <h2 id="metrics" className="eyebrow">{t.metrics}</h2>
+        <ul className="mt-4 grid gap-4 sm:grid-cols-3">
+          {project.metrics.map((m) => (
+            <li key={m.label.en} className="rounded-xl border border-slate-800 bg-ink-900/50 p-4">
+              <p className="font-mono text-xs text-slate-500">{m.label[locale]}</p>
+              <p className="mt-1 font-semibold text-emerald-400">{m.value}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <div className="mt-12 grid max-w-3xl gap-10">
         <section aria-labelledby="problem">
           <h2 id="problem" className="text-2xl font-bold text-white">{t.problem}</h2>

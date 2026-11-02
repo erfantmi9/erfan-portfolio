@@ -17,6 +17,13 @@ export function BeyondWork({ dict }: { dict: Dictionary }) {
             <Reveal delay={i * 0.1} className="h-full rounded-2xl border border-slate-800 bg-ink-900/50 p-7">
               <h3 className="text-xl font-bold text-amber-glow">{item.title}</h3>
               <p className="mt-3 leading-relaxed text-slate-400">{item.body}</p>
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {item.tags.map((tag) => (
+                  <li key={tag} className="rounded-full border border-slate-700 px-3 py-1 font-mono text-xs text-slate-300">
+                    {tag}
+                  </li>
+                ))}
+              </ul>
             </Reveal>
           </li>
         ))}

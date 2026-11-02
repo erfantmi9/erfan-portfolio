@@ -39,6 +39,9 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <Link href={`/${locale}#work`} className="btn-primary">
               {dict.hero.ctaPrimary}
             </Link>
+            <Link href={`/${locale}#labs`} className="btn-ghost">
+              {dict.hero.ctaLab}
+            </Link>
             <Link href={`/${locale}#contact`} className="btn-ghost">
               {dict.hero.ctaSecondary}
             </Link>
@@ -51,6 +54,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <span aria-hidden className="h-2 w-2 rounded-full bg-neon shadow-glow" />
             {dict.hero.available}
           </p>
+          <p className="mt-2 pl-4 font-mono text-xs text-slate-500">{dict.hero.languages}</p>
         </div>
 
         <figure
@@ -75,7 +79,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               {"  "}focus: <span className="text-amber-glow">&quot;performance · AI-native UI&quot;</span>,{"\n"}
               {"  "}languages: [<span className="text-neon">&quot;en&quot;</span>,{" "}
               <span className="text-neon">&quot;de&quot;</span>],{"\n"}
-              {"  "}location: <span className="text-amber-glow">&quot;{site.location}&quot;</span>,{"\n"}
+              {"  "}based: <span className="text-amber-glow">&quot;{site.location}&quot;</span>,{"\n"}
               {"};"}
               <span aria-hidden className="ml-1 inline-block h-4 w-2 translate-y-0.5 bg-neon animate-blink" />
             </code>

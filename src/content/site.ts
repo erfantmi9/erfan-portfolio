@@ -7,7 +7,7 @@ export const site = {
   name: "Erfan Teymuri",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   email: "hello@example.com", // TODO
-  location: "Salzburg, Austria", // TODO: confirm
+  location: "Iran → Austria (open to relocation)",
   cvPath: "/cv/Erfan-Teymuri-CV.pdf", // TODO: drop the PDF into /public/cv/
   socials: {
     github: "https://github.com/your-handle", // TODO

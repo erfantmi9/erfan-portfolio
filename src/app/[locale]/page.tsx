@@ -6,6 +6,8 @@ import { About } from "@/components/About";
 import { Projects } from "@/components/Projects";
 import { Experience } from "@/components/Experience";
 import { BeyondWork } from "@/components/BeyondWork";
+import { Labs } from "@/components/Labs";
+import { Playground } from "@/components/Playground";
 import { Contact } from "@/components/Contact";
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
@@ -18,7 +20,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <Hero locale={locale} dict={dict} />
       <About dict={dict} />
       <Projects locale={locale} dict={dict} />
+      <Labs dict={dict} />
       <Experience locale={locale} dict={dict} />
+      <Playground dict={dict} />
       <BeyondWork dict={dict} />
       <Contact dict={dict} />
     </>

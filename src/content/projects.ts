@@ -13,6 +13,8 @@ export interface Project {
   stack: readonly string[];
   accent: "emerald" | "amber" | "sky" | "violet";
   links: { live?: string; source?: string };
+  /** Verifiable engineering facts. Add measured numbers (Lighthouse, bundle size, etc.) once you have them. */
+  metrics: readonly { label: Localized; value: string }[];
 }
 
 // NOTE: descriptions are drafts based on the project briefs — refine with real metrics and links.
@@ -24,7 +26,7 @@ export const projects: readonly Project[] = [
     role: { en: "Creator & Frontend Engineer", de: "Entwickler & Frontend Engineer" },
     accent: "emerald",
     summary: {
-      en: "A trilingual, interactive platform that teaches algorithms through step-by-step visualisation.",
+      en: "A trilingual (EN/FA/DE) interactive platform that teaches algorithms through step-by-step SVG/canvas visualisation.",
       de: "Eine dreisprachige, interaktive Plattform, die Algorithmen durch schrittweise Visualisierung vermittelt.",
     },
     problem: {
@@ -45,8 +47,13 @@ export const projects: readonly Project[] = [
       en: "A reusable foundation for adding new algorithms and languages without touching the rendering layer.",
       de: "Eine wiederverwendbare Basis, um neue Algorithmen und Sprachen hinzuzufügen, ohne die Rendering-Schicht anzufassen.",
     },
-    stack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion", "Zustand"],
+    stack: ["Next.js 15", "TypeScript", "SVG / Canvas", "Tailwind CSS", "Framer Motion", "Zustand"],
     links: {},
+    metrics: [
+      { label: { en: "Languages", de: "Sprachen" }, value: "EN · FA · DE (RTL-aware)" },
+      { label: { en: "Rendering", de: "Rendering" }, value: "Custom SVG / canvas" },
+      { label: { en: "Engine", de: "Engine" }, value: "Pure typed step generators" },
+    ],
   },
   {
     slug: "memora",
@@ -63,8 +70,8 @@ export const projects: readonly Project[] = [
       de: "Event-Fotos landen verstreut auf den Handys der Gäste und in Chat-Apps. Gastgeber wollen einen zentralen Ort zum Sammeln und Live-Zeigen.",
     },
     approach: {
-      en: "Guests join via a link and upload from the browser — no install. New media is pushed to a slideshow view in real time, with optimistic uploads and resilient retries for patchy venue Wi-Fi.",
-      de: "Gäste treten per Link bei und laden direkt im Browser hoch — ohne Installation. Neue Medien erscheinen in Echtzeit in der Slideshow, mit optimistischen Uploads und robusten Wiederholungen bei schwachem WLAN.",
+      en: "Guests join via a link and upload from the browser — no install. Photos are compressed client-side before upload to save bandwidth on patchy mobile networks. New media is pushed to a slideshow view in real time, with optimistic uploads and resilient retries for patchy venue Wi-Fi.",
+      de: "Gäste treten per Link bei und laden direkt im Browser hoch — ohne Installation. Fotos werden vor dem Upload clientseitig komprimiert, um Bandbreite in schwachen Mobilnetzen zu sparen. Neue Medien erscheinen in Echtzeit in der Slideshow, mit optimistischen Uploads und robusten Wiederholungen bei schwachem WLAN.",
     },
     highlights: [
       { en: "Mobile-first upload flow with progress and retry", de: "Mobile-First-Upload mit Fortschritt und Wiederholung" },
@@ -75,8 +82,13 @@ export const projects: readonly Project[] = [
       en: "A frictionless way to turn every guest's camera roll into a shared, live memory wall.",
       de: "Ein reibungsloser Weg, die Fotogalerie jedes Gastes in eine gemeinsame, live aktualisierte Erinnerungswand zu verwandeln.",
     },
-    stack: ["React", "Next.js", "TypeScript", "TanStack Query", "WebSockets"],
+    stack: ["React", "Next.js", "TypeScript", "TanStack Query", "WebSockets", "Canvas API"],
     links: {},
+    metrics: [
+      { label: { en: "Uploads", de: "Uploads" }, value: "Client-side image compression" },
+      { label: { en: "Realtime", de: "Echtzeit" }, value: "WebSockets" },
+      { label: { en: "Target", de: "Zielgerät" }, value: "Mobile-first" },
+    ],
   },
   {
     slug: "discount-prime",
@@ -85,7 +97,7 @@ export const projects: readonly Project[] = [
     role: { en: "Frontend / Shopify Developer", de: "Frontend- / Shopify-Entwickler" },
     accent: "sky",
     summary: {
-      en: "A Shopify-based e-commerce application focused on discounts and fast storefront performance.",
+      en: "A Shopify e-commerce storefront engineered for performance: fast loads, clear discounts, light checkout path.",
       de: "Eine Shopify-basierte E-Commerce-Anwendung mit Fokus auf Rabatte und schnelle Storefront-Performance.",
     },
     problem: {
@@ -107,6 +119,11 @@ export const projects: readonly Project[] = [
     },
     stack: ["Shopify", "Liquid", "JavaScript", "Tailwind CSS"],
     links: {},
+    metrics: [
+      { label: { en: "Platform", de: "Plattform" }, value: "Shopify" },
+      { label: { en: "Focus", de: "Fokus" }, value: "Core Web Vitals (LCP, CLS)" },
+      { label: { en: "Approach", de: "Ansatz" }, value: "Lean assets, deferred scripts" },
+    ],
   },
   {
     slug: "jitsi-meet-localization",
@@ -137,6 +154,11 @@ export const projects: readonly Project[] = [
     },
     stack: ["i18n", "JSON", "Git", "Open source"],
     links: { source: "https://github.com/jitsi/jitsi-meet" },
+    metrics: [
+      { label: { en: "Locale", de: "Sprache" }, value: "Persian (fa)" },
+      { label: { en: "Layout", de: "Layout" }, value: "RTL review" },
+      { label: { en: "Type", de: "Art" }, value: "Open-source contribution" },
+    ],
   },
 ];
 

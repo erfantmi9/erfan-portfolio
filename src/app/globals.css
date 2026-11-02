@@ -34,7 +34,7 @@
     @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-colors;
   }
   .btn-primary {
-    @apply btn bg-neon text-ink-950 hover:bg-emerald-300;
+    @apply btn bg-neon text-ink-950 hover:bg-sky-300;
   }
   .btn-ghost {
     @apply btn border border-slate-700 text-slate-200 hover:border-neon hover:text-neon;
