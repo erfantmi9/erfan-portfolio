@@ -1,0 +1,104 @@
+export const en = {
+  meta: {
+    title: "Erfan Teymuri — Frontend Software Engineer",
+    description:
+      "Frontend engineer building high-performance React 19 / Next.js 15 interfaces, AI-native frontends and interactive education platforms.",
+  },
+  nav: {
+    skip: "Skip to main content",
+    about: "About",
+    work: "Work",
+    experience: "Experience",
+    beyond: "Beyond work",
+    contact: "Contact",
+    menu: "Menu",
+    close: "Close",
+    language: "Language",
+  },
+  hero: {
+    greeting: "Hi, I'm",
+    role: "Frontend Software Engineer",
+    tagline:
+      "I build fast, accessible, AI-native interfaces with React 19, Next.js 15 and TypeScript — and interactive platforms that make complex ideas click.",
+    ctaPrimary: "View selected work",
+    ctaSecondary: "Get in touch",
+    cv: "Download CV",
+    available: "Open to opportunities — international & Salzburg, Austria",
+  },
+  about: {
+    eyebrow: "Manifesto",
+    title: "Interfaces are products, not pictures.",
+    paragraphs: [
+      "I believe a frontend is an engineering discipline: performance budgets, typed contracts, accessible semantics and predictable state come before polish — and then polish makes it unforgettable.",
+      "My focus is high-performance interfaces, AI-native frontend architectures (streaming UI, structured outputs, graceful degradation) and interactive education platforms where visualisation does the teaching.",
+      "I work in public when I can: open-source contributions, trilingual products, and code that the next person can read.",
+    ],
+    principles: [
+      { title: "Performance first", body: "Server Components, small bundles, measured Core Web Vitals." },
+      { title: "Type-safe by default", body: "Strict TypeScript, validated boundaries, zero `any`." },
+      { title: "Accessible always", body: "Semantic HTML, keyboard paths, reduced-motion respect." },
+    ],
+  },
+  projects: {
+    eyebrow: "Featured projects",
+    title: "Selected work",
+    intro: "Four case studies across education, media, commerce and open source.",
+    viewCase: "Read case study",
+    back: "All projects",
+    role: "Role",
+    year: "Year",
+    stack: "Stack",
+    problem: "The problem",
+    approach: "The approach",
+    highlights: "Highlights",
+    outcome: "Outcome",
+    visit: "Visit project",
+    source: "View source",
+    next: "Next project",
+  },
+  experience: {
+    eyebrow: "Experience & skills",
+    title: "Tools I reach for",
+    timelineTitle: "Timeline",
+    skillsTitle: "Skills",
+  },
+  beyond: {
+    eyebrow: "Beyond work",
+    title: "Off the keyboard",
+    items: [
+      {
+        title: "Electric guitar",
+        body: "Practising tone, phrasing and improvisation. Music is the best teacher of iteration: small loops, honest feedback, steady progress.",
+      },
+      {
+        title: "Learning German",
+        body: "Working toward fluency for life and work in Austria. This site — and my products — are built trilingual because language is part of the interface.",
+      },
+    ],
+  },
+  contact: {
+    eyebrow: "Hire me",
+    title: "Let's build something fast and thoughtful.",
+    intro: "Open to frontend roles and collaborations. Tell me about your product — I reply within a couple of days.",
+    name: "Name",
+    email: "Email",
+    message: "Message",
+    send: "Send message",
+    sending: "Sending…",
+    success: "Thanks! Your message is on its way.",
+    error: "Something went wrong. Please try again or email me directly.",
+    rateLimited: "Too many requests. Please try again in a few minutes.",
+    validation: {
+      name: "Please enter your name (2–100 characters).",
+      email: "Please enter a valid email address.",
+      message: "Please write a message (10–2000 characters).",
+    },
+  },
+  footer: {
+    rights: "All rights reserved.",
+    built: "Built with Next.js 15, TypeScript & Tailwind CSS.",
+    top: "Back to top",
+  },
+};
+
+export type Dictionary = typeof en;
