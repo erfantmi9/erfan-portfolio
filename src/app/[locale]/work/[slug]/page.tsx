@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { ReactNode } from "react";
 import { isLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getProject, projects } from "@/content/projects";
+import { site } from "@/content/site";
+import { pageMetadata } from "@/lib/seo";
+import { SortVisualizer } from "@/components/SortVisualizer";
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -19,11 +23,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale, slug } = await params;
   const project = getProject(slug);
   if (!isLocale(locale) || !project) return {};
-  return {
-    title: project.title,
+  return pageMetadata({
+    locale,
+    path: `/work/${slug}`,
+    title: `${project.title} — ${getDictionary(locale).projects.caseStudy} | ${site.name}`,
     description: project.summary[locale],
-    alternates: { canonical: `/${locale}/work/${slug}` },
-  };
+  });
+}
+
+function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
+  return (
+    <section aria-labelledby={id}>
+      <h2 id={id} className="text-2xl font-bold text-white">
+        {title}
+      </h2>
+      {children}
+    </section>
+  );
 }
 
 export default async function CaseStudyPage({ params }: PageProps) {
@@ -31,9 +47,21 @@ export default async function CaseStudyPage({ params }: PageProps) {
   const project = getProject(slug);
   if (!isLocale(locale) || !project) notFound();
 
-  const t = getDictionary(locale).projects;
+  const dict = getDictionary(locale);
+  const t = dict.projects;
   const index = projects.findIndex((p) => p.slug === slug);
   const next = projects[(index + 1) % projects.length];
+
+  const facts = [
+    project.status && { key: "status", label: t.status, value: project.status[locale] },
+    project.role && { key: "role", label: t.role, value: project.role[locale] },
+    project.year && { key: "year", label: t.year, value: project.year },
+  ].filter((f): f is { key: string; label: string; value: string } => Boolean(f));
+
+  const decisions = project.technicalDecisions ?? [];
+  const implementation = project.implementation ?? [];
+  const subsections = project.subsections ?? [];
+  const links = project.links ?? [];
 
   return (
     <article className="section pt-32">
@@ -44,73 +72,98 @@ export default async function CaseStudyPage({ params }: PageProps) {
       <p className="mt-4 max-w-2xl text-lg text-slate-400">{project.summary[locale]}</p>
 
       <dl className="mt-10 grid gap-6 border-y border-slate-800 py-6 sm:grid-cols-3">
-        <div>
-          <dt className="eyebrow">{t.role}</dt>
-          <dd className="mt-1 text-slate-200">{project.role[locale]}</dd>
-        </div>
-        <div>
-          <dt className="eyebrow">{t.year}</dt>
-          <dd className="mt-1 text-slate-200">{project.year}</dd>
-        </div>
-        <div>
-          <dt className="eyebrow">{t.stack}</dt>
-          <dd className="mt-1 flex flex-wrap gap-2">
-            {project.stack.map((s) => (
-              <span key={s} className="rounded bg-ink-800 px-2 py-0.5 font-mono text-xs text-slate-300">
-                {s}
-              </span>
-            ))}
-          </dd>
-        </div>
+        {facts.map((f) => (
+          <div key={f.key}>
+            <dt className="eyebrow">{f.label}</dt>
+            <dd className="mt-1 text-slate-200">{f.value}</dd>
+          </div>
+        ))}
+        {project.stack.length > 0 && (
+          <div>
+            <dt className="eyebrow">{t.stack}</dt>
+            <dd className="mt-1 flex flex-wrap gap-2">
+              {project.stack.map((s) => (
+                <span key={s} className="rounded bg-ink-800 px-2 py-0.5 font-mono text-xs text-slate-300">
+                  {s}
+                </span>
+              ))}
+            </dd>
+          </div>
+        )}
       </dl>
 
-      <section aria-labelledby="metrics" className="mt-10">
-        <h2 id="metrics" className="eyebrow">{t.metrics}</h2>
-        <ul className="mt-4 grid gap-4 sm:grid-cols-3">
-          {project.metrics.map((m) => (
-            <li key={m.label.en} className="rounded-xl border border-slate-800 bg-ink-900/50 p-4">
-              <p className="font-mono text-xs text-slate-500">{m.label[locale]}</p>
-              <p className="mt-1 font-semibold text-emerald-400">{m.value}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
-
       <div className="mt-12 grid max-w-3xl gap-10">
-        <section aria-labelledby="problem">
-          <h2 id="problem" className="text-2xl font-bold text-white">{t.problem}</h2>
-          <p className="mt-3 leading-relaxed">{project.problem[locale]}</p>
+        {project.problem && (
+          <Section id="problem" title={t.problem}>
+            <p className="mt-3 leading-relaxed">{project.problem[locale]}</p>
+          </Section>
+        )}
+        {project.myRole && (
+          <Section id="my-role" title={t.myRole}>
+            <p className="mt-3 leading-relaxed">{project.myRole[locale]}</p>
+          </Section>
+        )}
+        {decisions.length > 0 && (
+          <Section id="decisions" title={t.technicalDecisions}>
+            <ul className="mt-3 list-disc space-y-2 pl-5 marker:text-neon">
+              {decisions.map((d) => (
+                <li key={d.en}>{d[locale]}</li>
+              ))}
+            </ul>
+          </Section>
+        )}
+        {(implementation.length > 0 || subsections.length > 0) && (
+          <Section id="implementation" title={t.implementation}>
+            {implementation.length > 0 && (
+              <ul className="mt-3 list-disc space-y-2 pl-5 marker:text-neon">
+                {implementation.map((d) => (
+                  <li key={d.en}>{d[locale]}</li>
+                ))}
+              </ul>
+            )}
+            {subsections.map((s) => (
+              <div key={s.title.en} className="mt-6">
+                <h3 className="text-lg font-semibold text-white">{s.title[locale]}</h3>
+                <p className="mt-2 leading-relaxed">{s.body[locale]}</p>
+              </div>
+            ))}
+          </Section>
+        )}
+        {project.result && (
+          <Section id="result" title={t.result}>
+            <p className="mt-3 leading-relaxed">{project.result[locale]}</p>
+          </Section>
+        )}
+      </div>
+
+      {project.demo === "sort-visualizer" && (
+        <section id="lab" aria-labelledby="lab-title" className="mt-16 scroll-mt-24">
+          <h2 id="lab-title" className="text-2xl font-bold text-white">
+            {dict.labs.title}
+          </h2>
+          <p className="mt-3 max-w-2xl leading-relaxed">{dict.labs.intro}</p>
+          <div className="mt-8">
+            <SortVisualizer dict={dict} />
+          </div>
         </section>
-        <section aria-labelledby="approach">
-          <h2 id="approach" className="text-2xl font-bold text-white">{t.approach}</h2>
-          <p className="mt-3 leading-relaxed">{project.approach[locale]}</p>
-        </section>
-        <section aria-labelledby="highlights">
-          <h2 id="highlights" className="text-2xl font-bold text-white">{t.highlights}</h2>
-          <ul className="mt-3 list-disc space-y-2 pl-5 marker:text-neon">
-            {project.highlights.map((h) => (
-              <li key={h.en}>{h[locale]}</li>
+      )}
+
+      {links.length > 0 && (
+        <section aria-labelledby="links" className="mt-12">
+          <h2 id="links" className="text-2xl font-bold text-white">
+            {t.links}
+          </h2>
+          <ul className="mt-4 flex flex-wrap gap-3">
+            {links.map((l) => (
+              <li key={l.href}>
+                <a className="btn-ghost" href={l.href} target="_blank" rel="noopener noreferrer">
+                  {l.label[locale]}
+                </a>
+              </li>
             ))}
           </ul>
         </section>
-        <section aria-labelledby="outcome">
-          <h2 id="outcome" className="text-2xl font-bold text-white">{t.outcome}</h2>
-          <p className="mt-3 leading-relaxed">{project.outcome[locale]}</p>
-        </section>
-      </div>
-
-      <div className="mt-10 flex flex-wrap gap-3">
-        {project.links.live && (
-          <a className="btn-primary" href={project.links.live} target="_blank" rel="noopener noreferrer">
-            {t.visit}
-          </a>
-        )}
-        {project.links.source && (
-          <a className="btn-ghost" href={project.links.source} target="_blank" rel="noopener noreferrer">
-            {t.source}
-          </a>
-        )}
-      </div>
+      )}
 
       {next && next.slug !== slug && (
         <Link

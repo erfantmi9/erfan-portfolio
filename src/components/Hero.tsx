@@ -39,7 +39,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <Link href={`/${locale}#work`} className="btn-primary">
               {dict.hero.ctaPrimary}
             </Link>
-            <Link href={`/${locale}#labs`} className="btn-ghost">
+            <Link href={`/${locale}/work/algorithm-visualizer#lab`} className="btn-ghost">
               {dict.hero.ctaLab}
             </Link>
             <Link href={`/${locale}#contact`} className="btn-ghost">
@@ -52,36 +52,34 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             )}
           </div>
 
-          <p className="mt-8 flex items-center gap-2 text-sm text-slate-500">
+          <p className="mt-8 flex items-center gap-2 text-sm text-slate-400">
             <span aria-hidden className="h-2 w-2 rounded-full bg-neon shadow-glow" />
             {dict.hero.available}
           </p>
-          <p className="mt-2 pl-4 font-mono text-xs text-slate-500">{dict.hero.languages}</p>
+          <p className="mt-2 pl-4 font-mono text-xs text-slate-400">{dict.hero.languages}</p>
         </div>
 
         <figure
           className="overflow-hidden rounded-xl border border-slate-800 bg-ink-900/80 shadow-glow"
-          aria-label="Code snippet describing Erfan"
+          aria-label={dict.hero.codeLabel}
         >
           <div className="flex items-center gap-2 border-b border-slate-800 px-4 py-3">
             <span aria-hidden className="h-3 w-3 rounded-full bg-red-400/80" />
             <span aria-hidden className="h-3 w-3 rounded-full bg-amber-glow/80" />
             <span aria-hidden className="h-3 w-3 rounded-full bg-neon/80" />
-            <figcaption className="ml-3 font-mono text-xs text-slate-500">erfan.ts</figcaption>
+            <figcaption className="ml-3 font-mono text-xs text-slate-400">erfan.ts</figcaption>
           </div>
           <pre className="overflow-x-auto p-5 font-mono text-[13px] leading-7 sm:text-sm">
             <code>
               <span className="text-violet-400">const</span> <span className="text-sky-300">erfan</span>
               {" = {\n"}
               {"  "}role: <span className="text-amber-glow">&quot;Frontend Engineer&quot;</span>,{"\n"}
-              {"  "}stack: [<span className="text-neon">&quot;React 19&quot;</span>,{" "}
-              <span className="text-neon">&quot;Next.js 15&quot;</span>,{"\n"}
-              {"          "}
+              {"  "}stack: [<span className="text-neon">&quot;React&quot;</span>,{" "}
               <span className="text-neon">&quot;TypeScript&quot;</span>],{"\n"}
-              {"  "}focus: <span className="text-amber-glow">&quot;performance · AI-native UI&quot;</span>,{"\n"}
+              {"  "}focus: <span className="text-amber-glow">&quot;real-time web apps&quot;</span>,{"\n"}
               {"  "}languages: [<span className="text-neon">&quot;en&quot;</span>,{" "}
               <span className="text-neon">&quot;de&quot;</span>],{"\n"}
-              {"  "}based: <span className="text-amber-glow">&quot;{site.location}&quot;</span>,{"\n"}
+              {"  "}based: <span className="text-amber-glow">&quot;Iran → Austria, open to relocation&quot;</span>,{"\n"}
               {"};"}
               <span aria-hidden className="ml-1 inline-block h-4 w-2 translate-y-0.5 bg-neon animate-blink" />
             </code>

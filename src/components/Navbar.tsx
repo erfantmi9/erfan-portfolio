@@ -16,15 +16,11 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  const links = [
-    { href: `/${locale}#about`, label: dict.nav.about },
-    { href: `/${locale}#work`, label: dict.nav.work },
-    { href: `/${locale}#labs`, label: dict.nav.labs },
-    { href: `/${locale}#experience`, label: dict.nav.experience },
-    { href: `/${locale}#playground`, label: dict.nav.playground },
-    { href: `/${locale}#beyond`, label: dict.nav.beyond },
-    { href: `/${locale}#contact`, label: dict.nav.contact },
-  ];
+  // Same list (and order) for desktop and mobile. Each anchor matches a section id on the home page.
+  const links = (["about", "work", "experience", "skills", "contact"] as const).map((id) => ({
+    href: `/${locale}#${id}`,
+    label: dict.nav[id],
+  }));
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-800/60 bg-ink-950/75 backdrop-blur-md">
@@ -33,7 +29,7 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <span className="text-neon">~/</span>erfan
         </Link>
 
-        <nav aria-label="Main" className="hidden items-center gap-5 lg:flex">
+        <nav aria-label={dict.nav.mainNav} className="hidden items-center gap-5 md:flex">
           {links.map((l) => (
             <Link key={l.href} href={l.href} className="text-sm text-slate-400 transition-colors hover:text-white">
               {l.label}
@@ -44,7 +40,7 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
         <button
           type="button"
-          className="rounded-md border border-slate-700 px-3 py-1.5 font-mono text-xs text-slate-200 lg:hidden"
+          className="hit-area rounded-md border border-slate-700 px-3 py-1.5 font-mono text-xs text-slate-200 md:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
@@ -54,8 +50,8 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       </div>
 
       {open && (
-        <div id="mobile-menu" className="border-t border-slate-800 bg-ink-950 px-5 py-4 lg:hidden">
-          <nav aria-label="Mobile" className="flex flex-col gap-1">
+        <div id="mobile-menu" className="border-t border-slate-800 bg-ink-950 px-5 py-4 md:hidden">
+          <nav aria-label={dict.nav.mobileNav} className="flex flex-col gap-1">
             {links.map((l) => (
               <Link
                 key={l.href}
@@ -67,7 +63,7 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               </Link>
             ))}
             <div className="mt-2 px-2">
-              <LanguageSwitcher locale={locale} label={dict.nav.language} />
+              <LanguageSwitcher locale={locale} label={dict.nav.language} onNavigate={() => setOpen(false)} />
             </div>
           </nav>
         </div>

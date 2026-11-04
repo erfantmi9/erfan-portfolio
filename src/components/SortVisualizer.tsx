@@ -41,6 +41,10 @@ export function SortVisualizer({ dict }: { dict: Dictionary }) {
   };
   const status = done ? t.sorted : current?.pair ? (current.swapped ? t.swapping : t.comparing) : t.idle;
 
+  const chartState = `${t.stepOf} ${Math.min(index, last)} ${t.of} ${last}: ${status}. ${t.arrayLabel}: ${
+    current?.values.join(", ") ?? ""
+  }`;
+
   const barColor = (i: number): string => {
     if (done) return "fill-emerald-400";
     if (current?.pair?.includes(i)) return current.swapped ? "fill-amber-400" : "fill-sky-400";
@@ -79,13 +83,13 @@ export function SortVisualizer({ dict }: { dict: Dictionary }) {
           >
             {speeds.map((s) => (
               <option key={s.id} value={s.id}>
-                {s.id}
+                {t.speeds[s.id]}
               </option>
             ))}
           </select>
         </label>
 
-        <p className="ml-auto font-mono text-xs text-slate-500">
+        <p className="ml-auto font-mono text-xs text-slate-400">
           {t.complexity}: <span className="text-amber-glow">{complexity[algorithm]}</span>
         </p>
       </div>
@@ -93,6 +97,7 @@ export function SortVisualizer({ dict }: { dict: Dictionary }) {
       <svg
         role="img"
         aria-label={t.chartLabel}
+        aria-describedby="sort-chart-state"
         viewBox="0 0 100 50"
         preserveAspectRatio="none"
         className="h-64 w-full bg-ink-950/60 p-3 sm:h-80"
@@ -149,12 +154,17 @@ export function SortVisualizer({ dict }: { dict: Dictionary }) {
           {t.shuffle}
         </button>
 
-        <p role="status" aria-live="polite" className="ml-auto font-mono text-xs text-slate-400">
+        <p className="ml-auto font-mono text-xs text-slate-400">
           <span className={done ? "text-emerald-400" : current?.swapped ? "text-amber-glow" : "text-neon"}>{status}</span>
           {" · "}
           {t.stepOf} {Math.min(index, last)}/{last}
         </p>
       </div>
+
+      {/* Text alternative for the chart. Announced politely only while playback is stopped, so playing is not noisy. */}
+      <p id="sort-chart-state" className="sr-only" aria-live="polite" aria-atomic="true">
+        {playing ? "" : chartState}
+      </p>
     </div>
   );
 }

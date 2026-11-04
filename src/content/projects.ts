@@ -1,167 +1,147 @@
 import type { Localized } from "./site";
 
-export interface Project {
-  slug: string;
-  title: string;
-  year: string;
-  role: Localized;
-  summary: Localized;
-  problem: Localized;
-  approach: Localized;
-  highlights: readonly Localized[];
-  outcome: Localized;
-  stack: readonly string[];
-  accent: "emerald" | "amber" | "sky" | "violet";
-  links: { live?: string; source?: string };
-  /** Verifiable engineering facts. Add measured numbers (Lighthouse, bundle size, etc.) once you have them. */
-  metrics: readonly { label: Localized; value: string }[];
+export interface CaseStudyLink {
+  label: Localized;
+  href: string;
 }
 
-// NOTE: descriptions are drafts based on the project briefs — refine with real metrics and links.
-export const projects: readonly Project[] = [
+export interface CaseStudySubsection {
+  title: Localized;
+  body: Localized;
+}
+
+/**
+ * One model for every case study. Every section is optional: a missing or empty field is not rendered,
+ * and it appears automatically once data is added. Only add facts that are confirmed (see TODO.md / PROGRESS.md).
+ */
+export interface CaseStudy {
+  slug: string;
+  title: string;
+  summary: Localized;
+  accent: "emerald" | "amber" | "sky" | "violet";
+  stack: readonly string[];
+  year?: string;
+  /** Short status label, e.g. "In development". */
+  status?: Localized;
+  /** Short role label shown in the facts row. */
+  role?: Localized;
+  problem?: Localized;
+  myRole?: Localized;
+  technicalDecisions?: readonly Localized[];
+  implementation?: readonly Localized[];
+  /** Extra titled paragraphs inside the implementation part (e.g. a localization sub-project). */
+  subsections?: readonly CaseStudySubsection[];
+  result?: Localized;
+  links?: readonly CaseStudyLink[];
+  /** Interactive demo embedded in the case study. */
+  demo?: "sort-visualizer";
+}
+
+export const projects: readonly CaseStudy[] = [
   {
-    slug: "algorithm-visualizer-academy",
-    title: "Algorithm Visualizer Academy",
-    year: "2025",
-    role: { en: "Creator & Frontend Engineer", de: "Entwickler & Frontend Engineer" },
-    accent: "emerald",
+    slug: "jitsi-meet-webrtc",
+    title: "Jitsi Meet / WebRTC",
+    accent: "violet",
     summary: {
-      en: "A trilingual (EN/FA/DE) interactive platform that teaches algorithms through step-by-step SVG/canvas visualisation.",
-      de: "Eine dreisprachige, interaktive Plattform, die Algorithmen durch schrittweise Visualisierung vermittelt.",
+      en: "Frontend work on a customized fork of Jitsi Meet, the open-source WebRTC video-conferencing project, inside a larger collaboration platform.",
+      de: "Frontend-Arbeit an einem angepassten Fork von Jitsi Meet, dem Open-Source-Projekt für WebRTC-Videokonferenzen, innerhalb einer größeren Kollaborationsplattform.",
     },
-    problem: {
-      en: "Algorithms are usually taught with static diagrams and dense pseudocode, which hides how state evolves over time — and most material is English-only.",
-      de: "Algorithmen werden meist mit statischen Diagrammen und dichtem Pseudocode gelehrt, was die zeitliche Entwicklung des Zustands verbirgt — und das meiste Material ist nur auf Englisch.",
+    stack: ["React", "Jitsi Meet", "WebRTC", "Electron"],
+    myRole: {
+      en: "I worked on the frontend of the customized Jitsi Meet fork. Jitsi Meet's architecture comes from the open-source project; my part was adapting and integrating its frontend.",
+      de: "Ich habe am Frontend des angepassten Jitsi-Meet-Forks gearbeitet. Die Architektur von Jitsi Meet stammt aus dem Open-Source-Projekt; mein Teil war die Anpassung und Integration des Frontends.",
     },
-    approach: {
-      en: "Each algorithm is modelled as a pure generator of typed steps. The UI replays those steps with play, pause, scrub and speed controls, so visuals, code highlighting and explanations always stay in sync.",
-      de: "Jeder Algorithmus ist als reiner Generator typisierter Schritte modelliert. Die UI spielt diese Schritte mit Play, Pause, Scrubbing und Geschwindigkeit ab, sodass Visualisierung, Code-Hervorhebung und Erklärung stets synchron bleiben.",
-    },
-    highlights: [
-      { en: "Next.js 15 App Router with localized routes", de: "Next.js 15 App Router mit lokalisierten Routen" },
-      { en: "Step-based engine decoupled from rendering", de: "Schrittbasierte Engine, entkoppelt vom Rendering" },
-      { en: "Strict TypeScript across algorithms and UI", de: "Striktes TypeScript über Algorithmen und UI" },
-      { en: "Keyboard-accessible playback controls", de: "Tastaturbedienbare Wiedergabesteuerung" },
+    implementation: [
+      { en: "Customized the React frontend of Jitsi Meet.", de: "Das React-Frontend von Jitsi Meet angepasst." },
+      { en: "Upgraded the Jitsi web and Electron components.", de: "Die Web- und Electron-Komponenten von Jitsi aktualisiert." },
+      {
+        en: "Integrated the conferencing frontend into the larger platform.",
+        de: "Das Konferenz-Frontend in die größere Plattform integriert.",
+      },
     ],
-    outcome: {
-      en: "A reusable foundation for adding new algorithms and languages without touching the rendering layer.",
-      de: "Eine wiederverwendbare Basis, um neue Algorithmen und Sprachen hinzuzufügen, ohne die Rendering-Schicht anzufassen.",
-    },
-    stack: ["Next.js 15", "TypeScript", "SVG / Canvas", "Tailwind CSS", "Framer Motion", "Zustand"],
-    links: {},
-    metrics: [
-      { label: { en: "Languages", de: "Sprachen" }, value: "EN · FA · DE (RTL-aware)" },
-      { label: { en: "Rendering", de: "Rendering" }, value: "Custom SVG / canvas" },
-      { label: { en: "Engine", de: "Engine" }, value: "Pure typed step generators" },
+    subsections: [
+      {
+        title: { en: "Persian localization", de: "Persische Lokalisierung" },
+        body: {
+          en: "Work on the Persian (fa) localization of the Jitsi Meet interface.",
+          de: "Arbeit an der persischen (fa) Lokalisierung der Jitsi-Meet-Oberfläche.",
+        },
+      },
     ],
   },
   {
     slug: "memora",
     title: "Memora",
-    year: "2025",
-    role: { en: "Frontend Engineer", de: "Frontend Engineer" },
     accent: "amber",
+    status: { en: "In development (about 30%)", de: "In Entwicklung (etwa 30 %)" },
+    role: { en: "Independent project", de: "Eigenständiges Projekt" },
     summary: {
-      en: "A mobile-first web app for sharing event photos and media, with real-time slideshows.",
-      de: "Eine Mobile-First-Web-App zum Teilen von Event-Fotos und -Medien mit Echtzeit-Slideshows.",
+      en: "An event photo-sharing web app: guests scan a QR code, upload photos and create a shared memory of the event.",
+      de: "Eine Web-App zum Teilen von Event-Fotos: Gäste scannen einen QR-Code, laden Fotos hoch und erstellen eine gemeinsame Erinnerung an das Event.",
     },
     problem: {
-      en: "Event photos end up scattered across guests' phones and chat apps. Hosts want one place to collect them and show them live.",
-      de: "Event-Fotos landen verstreut auf den Handys der Gäste und in Chat-Apps. Gastgeber wollen einen zentralen Ort zum Sammeln und Live-Zeigen.",
+      en: "Event photos end up spread across guests' phones. Memora collects them in one shared gallery per event. The concept is inspired by GuestPix and adapted for the Iranian market.",
+      de: "Event-Fotos sind auf den Handys der Gäste verteilt. Memora sammelt sie in einer gemeinsamen Galerie pro Event. Das Konzept ist von GuestPix inspiriert und für den iranischen Markt angepasst.",
     },
-    approach: {
-      en: "Guests join via a link and upload from the browser — no install. Photos are compressed client-side before upload to save bandwidth on patchy mobile networks. New media is pushed to a slideshow view in real time, with optimistic uploads and resilient retries for patchy venue Wi-Fi.",
-      de: "Gäste treten per Link bei und laden direkt im Browser hoch — ohne Installation. Fotos werden vor dem Upload clientseitig komprimiert, um Bandbreite in schwachen Mobilnetzen zu sparen. Neue Medien erscheinen in Echtzeit in der Slideshow, mit optimistischen Uploads und robusten Wiederholungen bei schwachem WLAN.",
-    },
-    highlights: [
-      { en: "Mobile-first upload flow with progress and retry", de: "Mobile-First-Upload mit Fortschritt und Wiederholung" },
-      { en: "Real-time slideshow updates", de: "Echtzeit-Updates der Slideshow" },
-      { en: "Optimised image loading for large galleries", de: "Optimiertes Laden von Bildern in großen Galerien" },
-    ],
-    outcome: {
-      en: "A frictionless way to turn every guest's camera roll into a shared, live memory wall.",
-      de: "Ein reibungsloser Weg, die Fotogalerie jedes Gastes in eine gemeinsame, live aktualisierte Erinnerungswand zu verwandeln.",
-    },
-    stack: ["React", "Next.js", "TypeScript", "TanStack Query", "WebSockets", "Canvas API"],
-    links: {},
-    metrics: [
-      { label: { en: "Uploads", de: "Uploads" }, value: "Client-side image compression" },
-      { label: { en: "Realtime", de: "Echtzeit" }, value: "WebSockets" },
-      { label: { en: "Target", de: "Zielgerät" }, value: "Mobile-first" },
+    stack: ["Next.js 16", "React 19", "TypeScript", "Supabase"],
+    implementation: [
+      { en: "Guest access via QR code", de: "Zugang für Gäste per QR-Code" },
+      { en: "Uploads without guest registration", de: "Uploads ohne Registrierung der Gäste" },
+      { en: "Image compression", de: "Bildkomprimierung" },
+      { en: "Event galleries", de: "Event-Galerien" },
+      { en: "Live slideshow", de: "Live-Diashow" },
+      { en: "Manual moderation", de: "Manuelle Moderation" },
+      { en: "Admin area for hosts", de: "Admin-Bereich für Gastgeber" },
+      { en: "Persian interface with right-to-left layout", de: "Persische Oberfläche mit Rechts-nach-links-Layout" },
     ],
   },
   {
     slug: "discount-prime",
     title: "Discount Prime",
-    year: "2024",
-    role: { en: "Frontend / Shopify Developer", de: "Frontend- / Shopify-Entwickler" },
     accent: "sky",
     summary: {
-      en: "A Shopify e-commerce storefront engineered for performance: fast loads, clear discounts, light checkout path.",
-      de: "Eine Shopify-basierte E-Commerce-Anwendung mit Fokus auf Rabatte und schnelle Storefront-Performance.",
+      en: "A Shopify Admin app with dynamic discount functionality.",
+      de: "Eine Shopify-Admin-App mit dynamischen Rabattfunktionen.",
     },
-    problem: {
-      en: "Discount-driven shops need clear pricing, quick browsing and a checkout that never feels heavy — especially on mobile.",
-      de: "Rabattorientierte Shops brauchen klare Preise, schnelles Stöbern und einen Checkout, der sich nie schwerfällig anfühlt — besonders mobil.",
-    },
-    approach: {
-      en: "Built on Shopify with a lean, componentised storefront: lightweight assets, clear discount presentation and a streamlined path from product to checkout.",
-      de: "Auf Shopify aufgebaut, mit schlanker, komponentenbasierter Storefront: leichte Assets, klare Rabattdarstellung und ein kurzer Weg vom Produkt zum Checkout.",
-    },
-    highlights: [
-      { en: "Shopify storefront customisation", de: "Anpassung der Shopify-Storefront" },
-      { en: "Clear discount and price presentation", de: "Klare Darstellung von Rabatten und Preisen" },
-      { en: "Mobile-first, performance-minded UI", de: "Mobile-First-UI mit Performance-Fokus" },
-    ],
-    outcome: {
-      en: "A fast, conversion-minded storefront that makes deals easy to find and easy to buy.",
-      de: "Eine schnelle, konversionsorientierte Storefront, in der Angebote leicht zu finden und leicht zu kaufen sind.",
-    },
-    stack: ["Shopify", "Liquid", "JavaScript", "Tailwind CSS"],
-    links: {},
-    metrics: [
-      { label: { en: "Platform", de: "Plattform" }, value: "Shopify" },
-      { label: { en: "Focus", de: "Fokus" }, value: "Core Web Vitals (LCP, CLS)" },
-      { label: { en: "Approach", de: "Ansatz" }, value: "Lean assets, deferred scripts" },
-    ],
+    stack: ["Shopify"],
   },
   {
-    slug: "jitsi-meet-localization",
-    title: "Jitsi-Meet Localization",
-    year: "2024",
-    role: { en: "Open-source Contributor", de: "Open-Source-Mitwirkender" },
-    accent: "violet",
+    slug: "algorithm-visualizer",
+    title: "Algorithm Visualizer",
+    accent: "emerald",
     summary: {
-      en: "Persian translation management and contributions to the open-source Jitsi Meet video-conferencing project.",
-      de: "Verwaltung der persischen Übersetzung und Beiträge zum Open-Source-Videokonferenzprojekt Jitsi Meet.",
+      en: "An interactive sorting demo that replays bubble, insertion and selection sort step by step as an SVG bar chart.",
+      de: "Eine interaktive Sortier-Demo, die Bubble Sort, Insertion Sort und Selection Sort Schritt für Schritt als SVG-Balkendiagramm abspielt.",
     },
-    problem: {
-      en: "Persian-speaking users need a fully localised conferencing UI, including right-to-left layout and consistent terminology.",
-      de: "Persischsprachige Nutzer brauchen eine vollständig lokalisierte Konferenzoberfläche, inklusive Rechts-nach-links-Layout und einheitlicher Terminologie.",
-    },
-    approach: {
-      en: "Maintained and extended the Persian translation files, aligned terminology with the existing glossary and reviewed strings in context to catch truncation and RTL issues.",
-      de: "Die persischen Übersetzungsdateien gepflegt und erweitert, Terminologie am bestehenden Glossar ausgerichtet und Texte im Kontext geprüft, um Kürzungen und RTL-Probleme zu finden.",
-    },
-    highlights: [
-      { en: "Translation coverage and consistency for Persian", de: "Abdeckung und Konsistenz der persischen Übersetzung" },
-      { en: "Contextual review for RTL layout issues", de: "Kontextuelle Prüfung auf RTL-Layoutprobleme" },
-      { en: "Collaboration through open-source workflows", de: "Zusammenarbeit über Open-Source-Workflows" },
+    stack: ["React", "TypeScript", "SVG"],
+    implementation: [
+      {
+        en: "A pure function records every comparison and swap as a typed list of steps; the input array is never mutated.",
+        de: "Eine reine Funktion speichert jeden Vergleich und jeden Tausch als typisierte Liste von Schritten; das Eingabe-Array wird nie verändert.",
+      },
+      {
+        en: "A seeded random generator creates the same starting array on the server and in the browser.",
+        de: "Ein Zufallsgenerator mit festem Startwert erzeugt auf dem Server und im Browser dasselbe Start-Array.",
+      },
+      {
+        en: "The React component replays the steps with play, pause, single step, reset, shuffle and three speeds.",
+        de: "Die React-Komponente spielt die Schritte mit Abspielen, Pause, Einzelschritt, Zurücksetzen, Mischen und drei Geschwindigkeiten ab.",
+      },
+      {
+        en: "Colours mark the compared, swapped and sorted bars.",
+        de: "Farben markieren verglichene, getauschte und sortierte Balken.",
+      },
     ],
-    outcome: {
-      en: "Better access to a widely used open-source tool for Persian speakers.",
-      de: "Besserer Zugang zu einem weit verbreiteten Open-Source-Werkzeug für Persischsprachige.",
-    },
-    stack: ["i18n", "JSON", "Git", "Open source"],
-    links: { source: "https://github.com/jitsi/jitsi-meet" },
-    metrics: [
-      { label: { en: "Locale", de: "Sprache" }, value: "Persian (fa)" },
-      { label: { en: "Layout", de: "Layout" }, value: "RTL review" },
-      { label: { en: "Type", de: "Art" }, value: "Open-source contribution" },
-    ],
+    demo: "sort-visualizer",
   },
 ];
 
-export function getProject(slug: string): Project | undefined {
+export function getProject(slug: string): CaseStudy | undefined {
   return projects.find((p) => p.slug === slug);
 }
+
+/** Old slugs that permanently redirect to the current ones (used in next.config.ts). */
+export const slugRedirects: Readonly<Record<string, string>> = {
+  "algorithm-visualizer-academy": "algorithm-visualizer",
+  "jitsi-meet-localization": "jitsi-meet-webrtc",
+};
