@@ -9,9 +9,7 @@ export const en = {
     about: "About",
     work: "Work",
     experience: "Experience",
-    labs: "Labs",
-    playground: "AI playground",
-    beyond: "Beyond code",
+    skills: "Skills",
     contact: "Contact",
     menu: "Menu",
     close: "Close",
@@ -30,17 +28,15 @@ export const en = {
     languages: "EN · FA · DE (A1, actively learning)",
   },
   about: {
-    eyebrow: "Manifesto",
-    title: "Interfaces are products, not pictures.",
+    eyebrow: "About",
+    title: "About me",
     paragraphs: [
-      "I believe a frontend is an engineering discipline: performance budgets, typed contracts, accessible semantics and predictable state come before polish — and then polish makes it unforgettable.",
-      "My focus is high-performance interfaces, AI-native frontend architectures (streaming UI, structured outputs, graceful degradation) and interactive education platforms where visualisation does the teaching.",
-      "I work in public when I can: open-source contributions, trilingual products, and code that the next person can read.",
+      "I'm a frontend engineer who builds web applications with React and TypeScript. I work on the frontend of an organizational collaboration platform, where my contributions have included real-time communication features based on WebRTC and Jitsi Meet. Outside of work I build my own products, such as Memora, an event photo-sharing app.",
     ],
     principles: [
-      { title: "Performance first", body: "Server Components, small bundles, measured Core Web Vitals." },
-      { title: "Type-safe by default", body: "Strict TypeScript, validated boundaries, zero `any`." },
-      { title: "Accessible always", body: "Semantic HTML, keyboard paths, reduced-motion respect." },
+      { title: "Typed by default", body: "Strict TypeScript, with data validated where it enters the app." },
+      { title: "Accessible", body: "Semantic HTML, keyboard navigation and reduced-motion support." },
+      { title: "Readable", body: "Small components and clear names, so the next person can change the code." },
     ],
   },
   projects: {
@@ -82,55 +78,35 @@ export const en = {
     complexity: "Time complexity",
     chartLabel: "Bar chart of the array being sorted",
   },
-  playground: {
-    eyebrow: "AI & engineering playground",
-    title: "AI-native frontend patterns",
-    intro: "Concepts I design and prototype for frontends where the model is a first-class collaborator.",
-    items: [
-      {
-        title: "Copilot-in-the-UI",
-        body: "Expose app state and typed actions to an in-app assistant (CopilotKit-style readable state and actions) so users can say what they want and the UI executes it.",
-        tags: ["CopilotKit", "Zustand", "Typed actions"],
-      },
-      {
-        title: "Streaming interfaces",
-        body: "Render partial model output progressively with Suspense and skeletons, keep input responsive, and degrade gracefully when the stream stalls.",
-        tags: ["React 19", "Suspense", "Streaming"],
-      },
-      {
-        title: "Structured outputs",
-        body: "Treat model responses as untrusted input: validate with Zod at the boundary, then render from typed data — never from raw strings.",
-        tags: ["Zod", "TypeScript", "Validation"],
-      },
-      {
-        title: "Server state done right",
-        body: "TanStack Query for caching, optimistic updates and retries; Zustand for local UI state. Clear ownership, no duplicated sources of truth.",
-        tags: ["TanStack Query", "Zustand"],
-      },
-    ],
+  exploring: {
+    eyebrow: "Learning",
+    title: "What I'm exploring",
+    body: "In my own time I'm learning how to build interfaces around AI features: streaming responses into the UI, validating model output before rendering it, and keeping the page usable when a request fails. This is self-study, not production experience.",
   },
   availability: {
     eyebrow: "Work & languages",
-    title: "Built for the Austrian market",
+    title: "Work in Austria",
     workTitle: "Work authorization & relocation",
     workBody:
       "I'm based in Iran and would need an Austrian work permit (e.g. Red-White-Red Card or EU Blue Card). I'm ready to relocate to Salzburg or Vienna, and my time zone is close to CET for remote or hybrid collaboration.",
-    facts: [
-      { label: "Target cities", value: "Salzburg · Vienna · Linz" },
-      { label: "Work model", value: "On-site, hybrid or remote" },
-      { label: "Permit", value: "Employer support needed" },
-    ],
+    labels: {
+      targetCities: "Target cities",
+      workModel: "Work model",
+      permit: "Permit",
+      startDate: "Earliest start",
+      noticePeriod: "Notice period",
+    },
     langTitle: "Languages",
-    languages: [
-      { name: "Persian", level: "Native" },
-      { name: "German", level: "A1 — learning actively, every day" },
-    ],
   },
   experience: {
-    eyebrow: "Experience & skills",
-    title: "Tools I reach for",
-    timelineTitle: "Timeline",
-    skillsTitle: "Skills",
+    eyebrow: "Experience",
+    title: "Where I work",
+  },
+  skills: {
+    eyebrow: "Skills",
+    title: "Tools I use",
+    daily: "Daily use",
+    familiar: "Familiar with",
   },
   beyond: {
     eyebrow: "Beyond code",

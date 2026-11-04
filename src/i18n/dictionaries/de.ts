@@ -11,9 +11,7 @@ export const de: Dictionary = {
     about: "Über mich",
     work: "Projekte",
     experience: "Erfahrung",
-    labs: "Labor",
-    playground: "KI-Playground",
-    beyond: "Abseits des Codes",
+    skills: "Skills",
     contact: "Kontakt",
     menu: "Menü",
     close: "Schließen",
@@ -32,17 +30,15 @@ export const de: Dictionary = {
     languages: "EN · FA · DE (A1, lerne aktiv)",
   },
   about: {
-    eyebrow: "Manifest",
-    title: "Oberflächen sind Produkte, keine Bilder.",
+    eyebrow: "Über mich",
+    title: "Über mich",
     paragraphs: [
-      "Für mich ist Frontend eine Ingenieursdisziplin: Performance-Budgets, typisierte Verträge, barrierefreie Semantik und vorhersehbarer State kommen vor dem Feinschliff — und der Feinschliff macht das Ergebnis unvergesslich.",
-      "Mein Fokus liegt auf performanten Oberflächen, KI-nativen Frontend-Architekturen (Streaming-UI, strukturierte Ausgaben, sanfte Degradation) und interaktiven Lernplattformen, auf denen Visualisierung das Lehren übernimmt.",
-      "Wo möglich arbeite ich öffentlich: Open-Source-Beiträge, dreisprachige Produkte und Code, den die nächste Person lesen kann.",
+      "Ich bin Frontend-Entwickler und baue Webanwendungen mit React und TypeScript. Ich arbeite am Frontend einer Kollaborationsplattform für Organisationen; zu meinen Beiträgen gehörten Echtzeit-Kommunikationsfunktionen auf Basis von WebRTC und Jitsi Meet. Außerhalb der Arbeit entwickle ich eigene Produkte, etwa Memora, eine App zum Teilen von Event-Fotos.",
     ],
     principles: [
-      { title: "Performance zuerst", body: "Server Components, kleine Bundles, gemessene Core Web Vitals." },
-      { title: "Standardmäßig typsicher", body: "Striktes TypeScript, validierte Schnittstellen, kein `any`." },
-      { title: "Immer barrierefrei", body: "Semantisches HTML, Tastaturbedienung, Respekt vor reduzierter Bewegung." },
+      { title: "Typisiert", body: "Striktes TypeScript; Daten werden dort validiert, wo sie in die App gelangen." },
+      { title: "Barrierefrei", body: "Semantisches HTML, Tastaturbedienung und Unterstützung für reduzierte Bewegung." },
+      { title: "Lesbar", body: "Kleine Komponenten und klare Namen, damit die nächste Person den Code ändern kann." },
     ],
   },
   projects: {
@@ -84,55 +80,35 @@ export const de: Dictionary = {
     complexity: "Zeitkomplexität",
     chartLabel: "Balkendiagramm des zu sortierenden Arrays",
   },
-  playground: {
-    eyebrow: "KI- & Engineering-Playground",
-    title: "KI-native Frontend-Muster",
-    intro: "Konzepte, die ich für Frontends entwerfe und prototypisiere, in denen das Modell ein gleichberechtigter Partner ist.",
-    items: [
-      {
-        title: "Copilot in der UI",
-        body: "App-State und typisierte Aktionen für einen integrierten Assistenten bereitstellen (CopilotKit-Stil), damit Nutzer sagen können, was sie wollen, und die UI es ausführt.",
-        tags: ["CopilotKit", "Zustand", "Typisierte Aktionen"],
-      },
-      {
-        title: "Streaming-Oberflächen",
-        body: "Teilweise Modellausgaben progressiv mit Suspense und Skeletons rendern, Eingaben reaktionsfähig halten und bei stockendem Stream sanft degradieren.",
-        tags: ["React 19", "Suspense", "Streaming"],
-      },
-      {
-        title: "Strukturierte Ausgaben",
-        body: "Modellantworten sind nicht vertrauenswürdige Eingaben: an der Grenze mit Zod validieren und dann aus typisierten Daten rendern — nie aus rohen Strings.",
-        tags: ["Zod", "TypeScript", "Validierung"],
-      },
-      {
-        title: "Server-State richtig",
-        body: "TanStack Query für Caching, optimistische Updates und Wiederholungen; Zustand für lokalen UI-State. Klare Zuständigkeiten, keine doppelten Wahrheitsquellen.",
-        tags: ["TanStack Query", "Zustand"],
-      },
-    ],
+  exploring: {
+    eyebrow: "Lernen",
+    title: "Woran ich gerade lerne",
+    body: "In meiner Freizeit lerne ich, Oberflächen für KI-Funktionen zu bauen: Antworten schrittweise in die UI streamen, Modellausgaben vor dem Rendern validieren und die Seite benutzbar halten, wenn eine Anfrage fehlschlägt. Das ist Selbststudium, keine Produktionserfahrung.",
   },
   availability: {
     eyebrow: "Arbeit & Sprachen",
-    title: "Gemacht für den österreichischen Markt",
+    title: "Arbeiten in Österreich",
     workTitle: "Arbeitserlaubnis & Umzug",
     workBody:
       "Ich lebe im Iran und benötige eine österreichische Arbeitserlaubnis (z. B. Rot-Weiß-Rot-Karte oder EU Blue Card). Ich bin bereit, nach Salzburg oder Wien zu ziehen, und meine Zeitzone liegt nah an MEZ für Remote- oder Hybrid-Zusammenarbeit.",
-    facts: [
-      { label: "Zielstädte", value: "Salzburg · Wien · Linz" },
-      { label: "Arbeitsmodell", value: "Vor Ort, hybrid oder remote" },
-      { label: "Genehmigung", value: "Unterstützung durch Arbeitgeber nötig" },
-    ],
+    labels: {
+      targetCities: "Zielstädte",
+      workModel: "Arbeitsmodell",
+      permit: "Genehmigung",
+      startDate: "Frühester Beginn",
+      noticePeriod: "Kündigungsfrist",
+    },
     langTitle: "Sprachen",
-    languages: [
-      { name: "Persisch", level: "Muttersprache" },
-      { name: "Deutsch", level: "A1 — lerne aktiv, täglich" },
-    ],
   },
   experience: {
-    eyebrow: "Erfahrung & Skills",
+    eyebrow: "Erfahrung",
+    title: "Wo ich arbeite",
+  },
+  skills: {
+    eyebrow: "Skills",
     title: "Meine Werkzeuge",
-    timelineTitle: "Werdegang",
-    skillsTitle: "Skills",
+    daily: "Täglich im Einsatz",
+    familiar: "Vertraut mit",
   },
   beyond: {
     eyebrow: "Abseits des Codes",

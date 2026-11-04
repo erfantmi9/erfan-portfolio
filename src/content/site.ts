@@ -15,23 +15,73 @@ export const site = {
   },
 } as const;
 
-export interface SkillGroup {
-  label: Localized;
-  items: readonly string[];
+export type SkillLevel = "daily" | "familiar";
+
+export interface Skill {
+  name: string;
+  level: SkillLevel;
 }
 
-export const skills: readonly SkillGroup[] = [
-  { label: { en: "Core", de: "Kern" }, items: ["React 19", "Next.js 15 (App Router)", "TypeScript", "Tailwind CSS"] },
-  { label: { en: "State & data", de: "State & Daten" }, items: ["Zustand", "TanStack Query", "Zod", "REST / Route Handlers"] },
-  { label: { en: "Motion & UX", de: "Motion & UX" }, items: ["Framer Motion", "Accessibility"] },
-  { label: { en: "AI-native UI", de: "KI-native UI" }, items: ["Streaming interfaces", "Structured outputs"] },
-  { label: { en: "Tooling", de: "Tooling" }, items: ["Git", "ESLint", "Vercel", "i18n workflows"] },
+/**
+ * Next.js and Tailwind CSS are intentionally absent until their group is confirmed (see TODO.md).
+ * A group with no items is not rendered.
+ */
+export const skills: readonly Skill[] = [
+  ...(["JavaScript", "TypeScript", "React", "HTML", "CSS", "Git", "Vite", "Nx"] as const).map(
+    (name): Skill => ({ name, level: "daily" }),
+  ),
+  ...(
+    [
+      "React Router",
+      "Zustand",
+      "TanStack Query",
+      "Ant Design",
+      "i18next",
+      "WebRTC",
+      "Jitsi Meet",
+      "Electron",
+      "Node.js",
+      "Mapbox",
+      "Chart.js",
+      "Shopify",
+    ] as const
+  ).map((name): Skill => ({ name, level: "familiar" })),
+];
+
+/** Work & languages. Every field is optional: a missing value hides its row. */
+export interface WorkFacts {
+  targetCities?: Localized;
+  workModel?: Localized;
+  permit?: Localized;
+  startDate?: Localized;
+  noticePeriod?: Localized;
+}
+
+export const workFacts: WorkFacts = {
+  targetCities: { en: "Salzburg · Vienna · Linz", de: "Salzburg · Wien · Linz" },
+  workModel: { en: "On-site, hybrid or remote", de: "Vor Ort, hybrid oder remote" },
+  permit: { en: "Employer support needed", de: "Unterstützung durch Arbeitgeber nötig" },
+  // startDate, noticePeriod: add when known (TODO.md).
+};
+
+export interface SpokenLanguage {
+  name: Localized;
+  /** Without a level the language is not shown. */
+  level?: Localized;
+}
+
+export const spokenLanguages: readonly SpokenLanguage[] = [
+  { name: { en: "Persian", de: "Persisch" }, level: { en: "Native", de: "Muttersprache" } },
+  { name: { en: "English", de: "Englisch" } /* level: add when known (TODO.md) */ },
+  { name: { en: "German", de: "Deutsch" }, level: { en: "A1, learning actively", de: "A1, lerne aktiv" } },
 ];
 
 export interface TimelineEntry {
   /** Hidden until confirmed. Employment dates stay unpublished until the start date is confirmed. */
   period?: Localized;
   title?: Localized;
+  /** Optional bullet points; the list is hidden when empty or absent. */
+  highlights?: readonly Localized[];
   org: Localized;
   summary: Localized;
 }

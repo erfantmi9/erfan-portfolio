@@ -5,9 +5,9 @@ import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Projects } from "@/components/Projects";
 import { Experience } from "@/components/Experience";
+import { Skills } from "@/components/Skills";
+import { Exploring } from "@/components/Exploring";
 import { BeyondWork } from "@/components/BeyondWork";
-import { Labs } from "@/components/Labs";
-import { Playground } from "@/components/Playground";
 import { Availability } from "@/components/Availability";
 import { Contact } from "@/components/Contact";
 
@@ -20,12 +20,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <>
       <Hero locale={locale} dict={dict} />
       <About dict={dict} />
-      <Projects locale={locale} dict={dict} />
-      <Labs dict={dict} />
       <Experience locale={locale} dict={dict} />
-      <Playground dict={dict} />
+      {/* Selected work also contains the Labs sorting widget (id="labs"). */}
+      <Projects locale={locale} dict={dict} />
+      <Skills dict={dict} />
+      <Exploring dict={dict} />
       <BeyondWork dict={dict} />
-      <Availability dict={dict} />
+      <Availability locale={locale} dict={dict} />
       <Contact locale={locale} dict={dict} />
     </>
   );
