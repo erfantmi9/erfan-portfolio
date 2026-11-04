@@ -22,10 +22,7 @@ export interface Skill {
   level: SkillLevel;
 }
 
-/**
- * Next.js and Tailwind CSS are intentionally absent until their group is confirmed (see TODO.md).
- * A group with no items is not rendered.
- */
+/** A group with no items is not rendered. */
 export const skills: readonly Skill[] = [
   ...(["JavaScript", "TypeScript", "React", "HTML", "CSS", "Git", "Vite", "Nx"] as const).map(
     (name): Skill => ({ name, level: "daily" }),
@@ -44,6 +41,8 @@ export const skills: readonly Skill[] = [
       "Mapbox",
       "Chart.js",
       "Shopify",
+      "Next.js",
+      "Tailwind CSS",
     ] as const
   ).map((name): Skill => ({ name, level: "familiar" })),
 ];

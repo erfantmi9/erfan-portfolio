@@ -74,14 +74,12 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               <span className="text-violet-400">const</span> <span className="text-sky-300">erfan</span>
               {" = {\n"}
               {"  "}role: <span className="text-amber-glow">&quot;Frontend Engineer&quot;</span>,{"\n"}
-              {"  "}stack: [<span className="text-neon">&quot;React 19&quot;</span>,{" "}
-              <span className="text-neon">&quot;Next.js 15&quot;</span>,{"\n"}
-              {"          "}
+              {"  "}stack: [<span className="text-neon">&quot;React&quot;</span>,{" "}
               <span className="text-neon">&quot;TypeScript&quot;</span>],{"\n"}
-              {"  "}focus: <span className="text-amber-glow">&quot;performance · AI-native UI&quot;</span>,{"\n"}
+              {"  "}focus: <span className="text-amber-glow">&quot;real-time web apps&quot;</span>,{"\n"}
               {"  "}languages: [<span className="text-neon">&quot;en&quot;</span>,{" "}
               <span className="text-neon">&quot;de&quot;</span>],{"\n"}
-              {"  "}based: <span className="text-amber-glow">&quot;{site.location}&quot;</span>,{"\n"}
+              {"  "}based: <span className="text-amber-glow">&quot;Iran → Austria, open to relocation&quot;</span>,{"\n"}
               {"};"}
               <span aria-hidden className="ml-1 inline-block h-4 w-2 translate-y-0.5 bg-neon animate-blink" />
             </code>

@@ -2,9 +2,9 @@ import type { Dictionary } from "./en";
 
 export const de: Dictionary = {
   meta: {
-    title: "Erfan Teymuri — Frontend Software Engineer",
+    title: "Erfan Teymuri — Frontend Engineer",
     description:
-      "Frontend-Entwickler für performante React-19-/Next.js-15-Oberflächen, KI-native Frontends und interaktive Lernplattformen.",
+      "Ich entwickle Echtzeit-Webanwendungen mit React und TypeScript, darunter Videokonferenz-Funktionen auf Basis von Jitsi Meet (WebRTC).",
   },
   nav: {
     skip: "Zum Hauptinhalt springen",
@@ -19,9 +19,9 @@ export const de: Dictionary = {
   },
   hero: {
     greeting: "Hallo, ich bin",
-    role: "Frontend Software Engineer",
+    role: "Frontend Engineer | React, TypeScript & Real-Time Web Applications",
     tagline:
-      "Ich entwickle schnelle, barrierefreie, KI-native Oberflächen mit React 19, Next.js 15 und TypeScript — und interaktive Plattformen, die komplexe Ideen verständlich machen.",
+      "Ich entwickle Echtzeit-Webanwendungen mit React und TypeScript, darunter Videokonferenz-Funktionen auf Basis von Jitsi Meet (WebRTC).",
     ctaPrimary: "Ausgewählte Projekte",
     ctaSecondary: "Kontakt aufnehmen",
     cv: "Lebenslauf herunterladen",
@@ -38,7 +38,6 @@ export const de: Dictionary = {
     principles: [
       { title: "Typisiert", body: "Striktes TypeScript; Daten werden dort validiert, wo sie in die App gelangen." },
       { title: "Barrierefrei", body: "Semantisches HTML, Tastaturbedienung und Unterstützung für reduzierte Bewegung." },
-      { title: "Lesbar", body: "Kleine Komponenten und klare Namen, damit die nächste Person den Code ändern kann." },
     ],
   },
   projects: {

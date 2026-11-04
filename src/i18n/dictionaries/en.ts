@@ -1,8 +1,8 @@
 export const en = {
   meta: {
-    title: "Erfan Teymuri — Frontend Software Engineer",
+    title: "Erfan Teymuri — Frontend Engineer",
     description:
-      "Frontend engineer building high-performance React 19 / Next.js 15 interfaces, AI-native frontends and interactive education platforms.",
+      "I build real-time web applications with React and TypeScript, including video-conferencing features on top of Jitsi Meet (WebRTC).",
   },
   nav: {
     skip: "Skip to main content",
@@ -17,9 +17,9 @@ export const en = {
   },
   hero: {
     greeting: "Hi, I'm",
-    role: "Frontend Software Engineer",
+    role: "Frontend Engineer | React, TypeScript & Real-Time Web Applications",
     tagline:
-      "I build fast, accessible, AI-native interfaces with React 19, Next.js 15 and TypeScript — and interactive platforms that make complex ideas click.",
+      "I build real-time web applications with React and TypeScript, including video-conferencing features on top of Jitsi Meet (WebRTC).",
     ctaPrimary: "View selected work",
     ctaSecondary: "Get in touch",
     cv: "Download CV",
@@ -36,7 +36,6 @@ export const en = {
     principles: [
       { title: "Typed by default", body: "Strict TypeScript, with data validated where it enters the app." },
       { title: "Accessible", body: "Semantic HTML, keyboard navigation and reduced-motion support." },
-      { title: "Readable", body: "Small components and clear names, so the next person can change the code." },
     ],
   },
   projects: {

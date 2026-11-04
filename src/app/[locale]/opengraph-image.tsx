@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { isLocale, defaultLocale } from "@/i18n/config";
 import { site } from "@/content/site";
 
-export const alt = "Erfan Teymuri — Frontend Software Engineer";
+export const alt = "Erfan Teymuri — Frontend Engineer | React, TypeScript & Real-Time Web Applications";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -10,7 +10,9 @@ export default async function OpengraphImage({ params }: { params: Promise<{ loc
   const { locale } = await params;
   const lang = isLocale(locale) ? locale : defaultLocale;
   const tagline =
-    lang === "de" ? "Performante, KI-native Oberflächen" : "High-performance, AI-native interfaces";
+    lang === "de"
+      ? "Echtzeit-Webanwendungen mit React und TypeScript"
+      : "Real-time web applications with React and TypeScript";
 
   return new ImageResponse(
     (
@@ -28,7 +30,7 @@ export default async function OpengraphImage({ params }: { params: Promise<{ loc
       >
         <div style={{ fontSize: 28, color: "#34d399", fontFamily: "monospace" }}>~/portfolio $ whoami</div>
         <div style={{ fontSize: 88, fontWeight: 800, marginTop: 24, color: "#ffffff" }}>{site.name}</div>
-        <div style={{ fontSize: 40, marginTop: 16, color: "#94a3b8" }}>Frontend Software Engineer</div>
+        <div style={{ fontSize: 40, marginTop: 16, color: "#94a3b8" }}>Frontend Engineer</div>
         <div style={{ fontSize: 30, marginTop: 40, color: "#fbbf24" }}>{tagline}</div>
       </div>
     ),

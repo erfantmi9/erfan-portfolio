@@ -57,19 +57,19 @@ export function ContactForm({ dict, locale }: { dict: Dictionary; locale: Locale
       <div>
         <label htmlFor="name" className="text-sm font-semibold text-slate-200">{t.name}</label>
         <input id="name" name="name" type="text" autoComplete="name" required className={inputClass}
-          aria-invalid={err("name")} aria-describedby={err("name") ? "name-err" : undefined} />
+          aria-invalid={err("name") || undefined} aria-describedby={err("name") ? "name-err" : undefined} />
         {err("name") && <p id="name-err" className="mt-1 text-sm text-red-400">{t.validation.name}</p>}
       </div>
       <div>
         <label htmlFor="email" className="text-sm font-semibold text-slate-200">{t.email}</label>
         <input id="email" name="email" type="email" autoComplete="email" required className={inputClass}
-          aria-invalid={err("email")} aria-describedby={err("email") ? "email-err" : undefined} />
+          aria-invalid={err("email") || undefined} aria-describedby={err("email") ? "email-err" : undefined} />
         {err("email") && <p id="email-err" className="mt-1 text-sm text-red-400">{t.validation.email}</p>}
       </div>
       <div>
         <label htmlFor="message" className="text-sm font-semibold text-slate-200">{t.message}</label>
         <textarea id="message" name="message" rows={5} required className={inputClass}
-          aria-invalid={err("message")} aria-describedby={err("message") ? "message-err" : undefined} />
+          aria-invalid={err("message") || undefined} aria-describedby={err("message") ? "message-err" : undefined} />
         {err("message") && <p id="message-err" className="mt-1 text-sm text-red-400">{t.validation.message}</p>}
       </div>
 
