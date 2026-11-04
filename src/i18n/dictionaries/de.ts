@@ -16,10 +16,12 @@ export const de: Dictionary = {
     menu: "Menü",
     close: "Schließen",
     language: "Sprache",
+    mainNav: "Hauptnavigation",
+    mobileNav: "Mobiles Menü",
   },
   hero: {
     greeting: "Hallo, ich bin",
-    role: "Frontend Engineer | React, TypeScript & Real-Time Web Applications",
+    role: "Frontend Engineer | React, TypeScript & Echtzeit-Webanwendungen",
     tagline:
       "Ich entwickle Echtzeit-Webanwendungen mit React und TypeScript, darunter Videokonferenz-Funktionen auf Basis von Jitsi Meet (WebRTC).",
     ctaPrimary: "Ausgewählte Projekte",
@@ -28,6 +30,7 @@ export const de: Dictionary = {
     available: "Wohnhaft im Iran · offen für Umzug & Remote-Rollen — Österreich (Salzburg / Wien) und international",
     ctaLab: "Live-Labor ausprobieren",
     languages: "EN · FA · DE (A1, lerne aktiv)",
+    codeLabel: "Code-Ausschnitt, der Erfan beschreibt",
   },
   about: {
     eyebrow: "Über mich",
@@ -71,6 +74,7 @@ export const de: Dictionary = {
     reset: "Zurücksetzen",
     shuffle: "Mischen",
     speed: "Tempo",
+    speeds: { slow: "Langsam", normal: "Normal", fast: "Schnell" },
     stepOf: "Schritt",
     comparing: "Vergleich",
     swapping: "Getauscht",
@@ -78,6 +82,8 @@ export const de: Dictionary = {
     idle: "Bereit",
     complexity: "Zeitkomplexität",
     chartLabel: "Balkendiagramm des zu sortierenden Arrays",
+    arrayLabel: "Array",
+    of: "von",
   },
   exploring: {
     eyebrow: "Lernen",

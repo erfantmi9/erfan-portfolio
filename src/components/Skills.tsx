@@ -22,7 +22,7 @@ export function Skills({ dict }: { dict: Dictionary }) {
       <div className="mt-12 grid gap-10 md:grid-cols-2">
         {groups.map((g, i) => (
           <Reveal key={g.level} delay={i * 0.1}>
-            <h3 className="font-mono text-sm uppercase tracking-widest text-slate-500">{g.label}</h3>
+            <h3 className="font-mono text-sm uppercase tracking-widest text-slate-400">{g.label}</h3>
             <ul className="mt-4 flex flex-wrap gap-2">
               {g.items.map((s) => (
                 <li key={s.name} className="rounded-md border border-slate-800 px-3 py-1 font-mono text-xs text-slate-300">

@@ -19,7 +19,7 @@ export function Projects({ locale, dict }: { locale: Locale; dict: Dictionary })
         {projects.map((project, i) => (
           <li key={project.slug}>
             <Reveal delay={(i % 2) * 0.1} className="h-full">
-              <ProjectCard project={project} locale={locale} index={i} cta={t.viewCase} />
+              <ProjectCard project={project} locale={locale} index={i} cta={t.viewCase} stackLabel={t.stack} />
             </Reveal>
           </li>
         ))}

@@ -14,9 +14,10 @@ interface ProjectCardProps {
   locale: Locale;
   index: number;
   cta: string;
+  stackLabel: string;
 }
 
-export function ProjectCard({ project, locale, index, cta }: ProjectCardProps) {
+export function ProjectCard({ project, locale, index, cta, stackLabel }: ProjectCardProps) {
   const a = accents[project.accent];
   return (
     <article
@@ -24,7 +25,7 @@ export function ProjectCard({ project, locale, index, cta }: ProjectCardProps) {
     >
       <div aria-hidden className={`absolute inset-0 -z-0 bg-gradient-to-br ${a.glow} to-transparent opacity-0 transition-opacity group-hover:opacity-100`} />
       <div className="relative flex flex-1 flex-col">
-        <div className="flex items-center justify-between font-mono text-xs text-slate-500">
+        <div className="flex items-center justify-between font-mono text-xs text-slate-400">
           <span className={a.text}>{String(index + 1).padStart(2, "0")}</span>
           {(project.status || project.year) && <span>{project.status?.[locale] ?? project.year}</span>}
         </div>
@@ -37,7 +38,7 @@ export function ProjectCard({ project, locale, index, cta }: ProjectCardProps) {
           </Link>
         </h3>
         <p className="mt-3 flex-1 text-slate-400">{project.summary[locale]}</p>
-        <ul className="mt-5 flex flex-wrap gap-2" aria-label="Stack">
+        <ul className="mt-5 flex flex-wrap gap-2" aria-label={stackLabel}>
           {project.stack.map((s) => (
             <li key={s} className="rounded bg-ink-800 px-2 py-0.5 font-mono text-xs text-slate-300">
               {s}

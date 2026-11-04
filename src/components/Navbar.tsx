@@ -29,7 +29,7 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <span className="text-neon">~/</span>erfan
         </Link>
 
-        <nav aria-label="Main" className="hidden items-center gap-5 md:flex">
+        <nav aria-label={dict.nav.mainNav} className="hidden items-center gap-5 md:flex">
           {links.map((l) => (
             <Link key={l.href} href={l.href} className="text-sm text-slate-400 transition-colors hover:text-white">
               {l.label}
@@ -40,7 +40,7 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
         <button
           type="button"
-          className="rounded-md border border-slate-700 px-3 py-1.5 font-mono text-xs text-slate-200 md:hidden"
+          className="hit-area rounded-md border border-slate-700 px-3 py-1.5 font-mono text-xs text-slate-200 md:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
@@ -51,7 +51,7 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
       {open && (
         <div id="mobile-menu" className="border-t border-slate-800 bg-ink-950 px-5 py-4 md:hidden">
-          <nav aria-label="Mobile" className="flex flex-col gap-1">
+          <nav aria-label={dict.nav.mobileNav} className="flex flex-col gap-1">
             {links.map((l) => (
               <Link
                 key={l.href}

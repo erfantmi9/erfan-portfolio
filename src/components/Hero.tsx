@@ -52,22 +52,22 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             )}
           </div>
 
-          <p className="mt-8 flex items-center gap-2 text-sm text-slate-500">
+          <p className="mt-8 flex items-center gap-2 text-sm text-slate-400">
             <span aria-hidden className="h-2 w-2 rounded-full bg-neon shadow-glow" />
             {dict.hero.available}
           </p>
-          <p className="mt-2 pl-4 font-mono text-xs text-slate-500">{dict.hero.languages}</p>
+          <p className="mt-2 pl-4 font-mono text-xs text-slate-400">{dict.hero.languages}</p>
         </div>
 
         <figure
           className="overflow-hidden rounded-xl border border-slate-800 bg-ink-900/80 shadow-glow"
-          aria-label="Code snippet describing Erfan"
+          aria-label={dict.hero.codeLabel}
         >
           <div className="flex items-center gap-2 border-b border-slate-800 px-4 py-3">
             <span aria-hidden className="h-3 w-3 rounded-full bg-red-400/80" />
             <span aria-hidden className="h-3 w-3 rounded-full bg-amber-glow/80" />
             <span aria-hidden className="h-3 w-3 rounded-full bg-neon/80" />
-            <figcaption className="ml-3 font-mono text-xs text-slate-500">erfan.ts</figcaption>
+            <figcaption className="ml-3 font-mono text-xs text-slate-400">erfan.ts</figcaption>
           </div>
           <pre className="overflow-x-auto p-5 font-mono text-[13px] leading-7 sm:text-sm">
             <code>

@@ -85,7 +85,7 @@ export function ContactForm({ dict, locale }: { dict: Dictionary; locale: Locale
         {status === "sending" ? t.sending : t.send}
       </button>
 
-      <p className="text-xs text-slate-500">
+      <p className="text-xs text-slate-400">
         {t.privacyText}{" "}
         <Link href={`/${locale}/datenschutz`} className="text-neon underline">
           {t.privacyLink}

@@ -14,6 +14,8 @@ export const en = {
     menu: "Menu",
     close: "Close",
     language: "Language",
+    mainNav: "Main",
+    mobileNav: "Mobile menu",
   },
   hero: {
     greeting: "Hi, I'm",
@@ -26,6 +28,7 @@ export const en = {
     available: "Based in Iran · open to relocation & remote roles — Austria (Salzburg / Vienna) and international",
     ctaLab: "Try the live lab",
     languages: "EN · FA · DE (A1, actively learning)",
+    codeLabel: "Code snippet describing Erfan",
   },
   about: {
     eyebrow: "About",
@@ -69,6 +72,7 @@ export const en = {
     reset: "Reset",
     shuffle: "Shuffle",
     speed: "Speed",
+    speeds: { slow: "Slow", normal: "Normal", fast: "Fast" },
     stepOf: "Step",
     comparing: "Comparing",
     swapping: "Swapped",
@@ -76,6 +80,8 @@ export const en = {
     idle: "Ready",
     complexity: "Time complexity",
     chartLabel: "Bar chart of the array being sorted",
+    arrayLabel: "Array",
+    of: "of",
   },
   exploring: {
     eyebrow: "Learning",

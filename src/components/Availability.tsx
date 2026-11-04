@@ -29,7 +29,7 @@ export function Availability({ locale, dict }: { locale: Locale; dict: Dictionar
             <dl className="mt-6 grid gap-4 sm:grid-cols-2">
               {facts.map((f) => (
                 <div key={f.key}>
-                  <dt className="font-mono text-xs uppercase tracking-widest text-slate-500">{f.label}</dt>
+                  <dt className="font-mono text-xs uppercase tracking-widest text-slate-400">{f.label}</dt>
                   <dd className="mt-1 text-slate-200">{f.value}</dd>
                 </div>
               ))}

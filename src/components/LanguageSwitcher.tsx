@@ -27,7 +27,7 @@ export function LanguageSwitcher({
   };
 
   return (
-    <nav aria-label={label} className="flex items-center gap-1 font-mono text-xs">
+    <nav aria-label={label} className="flex items-center gap-4 font-mono text-xs">
       {locales.map((l) => {
         const href = `/${l}${rest ? `/${rest}` : ""}`;
         return (
@@ -38,7 +38,7 @@ export function LanguageSwitcher({
             lang={l}
             onClick={(e) => go(e, href)}
             aria-current={l === locale ? "true" : undefined}
-            className={`rounded px-2 py-1 uppercase transition-colors ${
+            className={`hit-area rounded px-2 py-1 uppercase transition-colors ${
               l === locale ? "bg-neon/15 text-neon" : "text-slate-400 hover:text-white"
             }`}
           >

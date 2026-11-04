@@ -27,6 +27,10 @@
   .eyebrow {
     @apply font-mono text-sm uppercase tracking-widest text-neon;
   }
+  /* Invisible 44px-tall hit area around small links/buttons; the visible size stays the same. */
+  .hit-area {
+    @apply relative after:absolute after:-inset-x-2 after:-inset-y-3 after:content-[''];
+  }
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-colors;
   }
