@@ -19,11 +19,17 @@ export function Experience({ locale, dict }: { locale: Locale; dict: Dictionary 
           <h3 className="font-mono text-sm uppercase tracking-widest text-slate-500">{t.timelineTitle}</h3>
           <ol className="mt-6 space-y-8 border-l border-slate-800 pl-6">
             {timeline.map((entry) => (
-              <li key={`${entry.period}-${entry.org}`} className="relative">
+              <li key={entry.org.en} className="relative">
                 <span aria-hidden className="absolute -left-[29px] top-1.5 h-2.5 w-2.5 rounded-full bg-neon shadow-glow" />
-                <p className="font-mono text-xs text-neon">{entry.period}</p>
+                {entry.period && <p className="font-mono text-xs text-neon">{entry.period[locale]}</p>}
                 <h4 className="mt-1 text-lg font-bold text-white">
-                  {entry.title[locale]} · <span className="text-slate-400">{entry.org}</span>
+                  {entry.title ? (
+                    <>
+                      {entry.title[locale]} · <span className="text-slate-400">{entry.org[locale]}</span>
+                    </>
+                  ) : (
+                    entry.org[locale]
+                  )}
                 </h4>
                 <p className="mt-2 text-slate-400">{entry.summary[locale]}</p>
               </li>

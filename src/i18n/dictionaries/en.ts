@@ -65,7 +65,7 @@ export const en = {
     eyebrow: "Labs",
     title: "Algorithms, rendered live",
     intro:
-      "A small slice of Algorithm Visualizer Academy: every algorithm is a pure generator of typed steps, and this SVG view just replays them.",
+      "An interactive sorting demo: a pure function builds a typed list of steps for each algorithm, and this SVG view replays them.",
     algorithms: { bubble: "Bubble sort", insertion: "Insertion sort", selection: "Selection sort" },
     algorithmLabel: "Algorithm",
     play: "Play",
@@ -118,12 +118,10 @@ export const en = {
     facts: [
       { label: "Target cities", value: "Salzburg · Vienna · Linz" },
       { label: "Work model", value: "On-site, hybrid or remote" },
-      { label: "Start", value: "TODO: earliest start / notice period" },
       { label: "Permit", value: "Employer support needed" },
     ],
     langTitle: "Languages",
     languages: [
-      { name: "English", level: "TODO: confirm level (working language)" },
       { name: "Persian", level: "Native" },
       { name: "German", level: "A1 — learning actively, every day" },
     ],
@@ -159,8 +157,8 @@ export const en = {
     message: "Message",
     send: "Send message",
     sending: "Sending…",
-    success: "Thanks! Your message is on its way.",
-    error: "Something went wrong. Please try again or email me directly.",
+    success: "Thank you! Your message has been sent.",
+    error: "Your message could not be sent. Please try again or email me directly.",
     rateLimited: "Too many requests. Please try again in a few minutes.",
     privacyText: "Your details are used only to reply to your message. See the",
     privacyLink: "privacy policy",

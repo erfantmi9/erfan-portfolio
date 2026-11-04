@@ -5,11 +5,8 @@
 @layer base {
   html {
     color-scheme: dark;
-    scroll-behavior: auto;
-  }
-  html.lenis,
-  html.lenis body {
-    height: auto;
+    /* Keep in-page anchors clear of the fixed 4rem header. */
+    scroll-padding-top: 4rem;
   }
   body {
     @apply bg-ink-950 font-sans text-slate-300 antialiased;
@@ -38,6 +35,12 @@
   }
   .btn-ghost {
     @apply btn border border-slate-700 text-slate-200 hover:border-neon hover:text-neon;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
 
