@@ -5,6 +5,8 @@ import type { ReactNode } from "react";
 import { isLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getProject, projects } from "@/content/projects";
+import { site } from "@/content/site";
+import { pageMetadata } from "@/lib/seo";
 import { SortVisualizer } from "@/components/SortVisualizer";
 
 interface PageProps {
@@ -21,11 +23,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale, slug } = await params;
   const project = getProject(slug);
   if (!isLocale(locale) || !project) return {};
-  return {
-    title: project.title,
+  return pageMetadata({
+    locale,
+    path: `/work/${slug}`,
+    title: `${project.title} — ${getDictionary(locale).projects.caseStudy} | ${site.name}`,
     description: project.summary[locale],
-    alternates: { canonical: `/${locale}/work/${slug}` },
-  };
+  });
 }
 
 function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {

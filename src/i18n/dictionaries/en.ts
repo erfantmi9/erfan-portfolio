@@ -1,6 +1,6 @@
 export const en = {
   meta: {
-    title: "Erfan Teymuri — Frontend Engineer",
+    title: "Erfan Teymuri — Frontend Engineer (React, TypeScript)",
     description:
       "I build real-time web applications with React and TypeScript, including video-conferencing features on top of Jitsi Meet (WebRTC).",
   },
@@ -42,6 +42,7 @@ export const en = {
     eyebrow: "Featured projects",
     title: "Selected work",
     intro: "An app in development, a Shopify Admin app, video-conferencing frontend work and an interactive algorithm demo.",
+    caseStudy: "Case study",
     viewCase: "Read case study",
     back: "All projects",
     status: "Status",

@@ -3,6 +3,8 @@ import { site } from "./site";
 
 export interface LegalDoc {
   title: string;
+  /** Meta description only (not part of the legal text). */
+  description: string;
   updated: string;
   sections: readonly { heading: string; body: readonly string[] }[];
 }
@@ -15,6 +17,7 @@ export const legal: Record<LegalKind, Record<Locale, LegalDoc>> = {
   impressum: {
     en: {
       title: "Legal notice (Impressum)",
+      description: "Legal notice for the portfolio website of Erfan Teymuri.",
       updated: "2026-11",
       sections: [
         { heading: "Site owner", body: [site.name, `Email: ${site.email}`] },
@@ -29,6 +32,7 @@ export const legal: Record<LegalKind, Record<Locale, LegalDoc>> = {
     },
     de: {
       title: "Impressum",
+      description: "Impressum der Portfolio-Website von Erfan Teymuri.",
       updated: "2026-11",
       sections: [
         { heading: "Seiteninhaber", body: [site.name, `E-Mail: ${site.email}`] },
@@ -45,6 +49,7 @@ export const legal: Record<LegalKind, Record<Locale, LegalDoc>> = {
   datenschutz: {
     en: {
       title: "Privacy policy",
+      description: "Privacy policy for the portfolio website of Erfan Teymuri.",
       updated: "2026-11",
       sections: [
         { heading: "Responsible for this site", body: [`${site.name}, ${site.email}`] },
@@ -90,6 +95,7 @@ export const legal: Record<LegalKind, Record<Locale, LegalDoc>> = {
     },
     de: {
       title: "Datenschutzerklärung",
+      description: "Datenschutzerklärung der Portfolio-Website von Erfan Teymuri.",
       updated: "2026-11",
       sections: [
         { heading: "Verantwortlich für diese Seite", body: [`${site.name}, ${site.email}`] },

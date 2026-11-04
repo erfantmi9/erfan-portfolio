@@ -2,7 +2,7 @@ import type { Dictionary } from "./en";
 
 export const de: Dictionary = {
   meta: {
-    title: "Erfan Teymuri — Frontend Engineer",
+    title: "Erfan Teymuri — Frontend-Entwickler (React, TypeScript)",
     description:
       "Ich entwickle Echtzeit-Webanwendungen mit React und TypeScript, darunter Videokonferenz-Funktionen auf Basis von Jitsi Meet (WebRTC).",
   },
@@ -44,6 +44,7 @@ export const de: Dictionary = {
     eyebrow: "Ausgewählte Projekte",
     title: "Ausgewählte Arbeiten",
     intro: "Eine App in Entwicklung, eine Shopify-Admin-App, Frontend-Arbeit an Videokonferenzen und eine interaktive Algorithmus-Demo.",
+    caseStudy: "Fallstudie",
     viewCase: "Fallstudie lesen",
     back: "Alle Projekte",
     status: "Status",
