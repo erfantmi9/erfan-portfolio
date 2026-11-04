@@ -20,7 +20,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <>
       <Hero locale={locale} dict={dict} />
       <About dict={dict} />
-      {/* Selected work also contains the Labs sorting widget (id="labs"). */}
       <Projects locale={locale} dict={dict} />
       <Experience locale={locale} dict={dict} />
       <Skills dict={dict} />

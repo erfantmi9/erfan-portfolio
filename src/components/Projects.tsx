@@ -3,7 +3,6 @@ import type { Dictionary } from "@/i18n/dictionaries";
 import { projects } from "@/content/projects";
 import { ProjectCard } from "./ProjectCard";
 import { Reveal } from "./Reveal";
-import { Labs } from "./Labs";
 
 export function Projects({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const t = dict.projects;
@@ -25,7 +24,6 @@ export function Projects({ locale, dict }: { locale: Locale; dict: Dictionary })
           </li>
         ))}
       </ul>
-      <Labs dict={dict} />
     </section>
   );
 }

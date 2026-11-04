@@ -39,7 +39,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <Link href={`/${locale}#work`} className="btn-primary">
               {dict.hero.ctaPrimary}
             </Link>
-            <Link href={`/${locale}#labs`} className="btn-ghost">
+            <Link href={`/${locale}/work/algorithm-visualizer#lab`} className="btn-ghost">
               {dict.hero.ctaLab}
             </Link>
             <Link href={`/${locale}#contact`} className="btn-ghost">
