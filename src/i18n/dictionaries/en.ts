@@ -26,7 +26,7 @@ export const en = {
     ctaSecondary: "Get in touch",
     cv: "Download CV",
     available: "Based in Iran · open to relocation & remote roles — Austria (Salzburg / Vienna) and international",
-    ctaLab: "Try the live lab",
+    ctaLab: "Try the live demo",
     languages: "EN · FA · DE (A1, actively learning)",
     codeLabel: "Code snippet describing Erfan",
   },

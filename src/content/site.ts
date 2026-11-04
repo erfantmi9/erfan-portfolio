@@ -6,7 +6,6 @@ export const site = {
   name: "Erfan Teymuri",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   email: "erftmi.aut@gmail.com",
-  location: "Iran → Austria (open to relocation)",
   /** Set to the PDF path (e.g. "/cv/Erfan-Teymuri-CV.pdf") once the file exists in /public. null hides the button. */
   cvPath: null as string | null,
   socials: {

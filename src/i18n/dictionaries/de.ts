@@ -25,10 +25,10 @@ export const de: Dictionary = {
     tagline:
       "Ich entwickle Echtzeit-Webanwendungen mit React und TypeScript, darunter Videokonferenz-Funktionen auf Basis von Jitsi Meet (WebRTC).",
     ctaPrimary: "Ausgewählte Projekte",
-    ctaSecondary: "Kontakt aufnehmen",
+    ctaSecondary: "Kontakt",
     cv: "Lebenslauf herunterladen",
     available: "Wohnhaft im Iran · offen für Umzug & Remote-Rollen — Österreich (Salzburg / Wien) und international",
-    ctaLab: "Live-Labor ausprobieren",
+    ctaLab: "Live-Demo testen",
     languages: "EN · FA · DE (A1, lerne aktiv)",
     codeLabel: "Code-Ausschnitt, der Erfan beschreibt",
   },
