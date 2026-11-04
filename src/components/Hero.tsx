@@ -45,9 +45,11 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <Link href={`/${locale}#contact`} className="btn-ghost">
               {dict.hero.ctaSecondary}
             </Link>
-            <a href={site.cvPath} download className="btn-ghost">
-              {dict.hero.cv} ↓
-            </a>
+            {site.cvPath && (
+              <a href={site.cvPath} download className="btn-ghost">
+                {dict.hero.cv} ↓
+              </a>
+            )}
           </div>
 
           <p className="mt-8 flex items-center gap-2 text-sm text-slate-500">

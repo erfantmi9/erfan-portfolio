@@ -9,21 +9,16 @@ export interface LegalDoc {
 
 export type LegalKind = "impressum" | "datenschutz";
 
-// TODO: replace the bracketed values. This is a template, not legal advice — have it checked
-// (e.g. by the WKO Impressum generator or a lawyer) before publishing.
-const owner = {
-  address: "[TODO: Street, postcode, city, Iran]",
-  activity: "Software development / frontend engineering (freelance & portfolio)",
-};
-
+// Only confirmed details are published here. City/country and any postal address stay unpublished until
+// confirmed (tracked in TODO.md). This text describes how the site works; it is not legal advice.
 export const legal: Record<LegalKind, Record<Locale, LegalDoc>> = {
   impressum: {
     en: {
       title: "Legal notice (Impressum)",
       updated: "2026-11",
       sections: [
-        { heading: "Site owner", body: [site.name, owner.address, `Email: ${site.email}`] },
-        { heading: "Activity", body: [owner.activity] },
+        { heading: "Site owner", body: [site.name, `Email: ${site.email}`] },
+        { heading: "Purpose", body: ["Personal portfolio website."] },
         {
           heading: "Content & liability",
           body: [
@@ -36,12 +31,12 @@ export const legal: Record<LegalKind, Record<Locale, LegalDoc>> = {
       title: "Impressum",
       updated: "2026-11",
       sections: [
-        { heading: "Seiteninhaber", body: [site.name, owner.address, `E-Mail: ${site.email}`] },
-        { heading: "Tätigkeit", body: [owner.activity] },
+        { heading: "Seiteninhaber", body: [site.name, `E-Mail: ${site.email}`] },
+        { heading: "Zweck", body: ["Persönliche Portfolio-Website."] },
         {
           heading: "Inhalt & Haftung",
           body: [
-            "Die Inhalte dieser Seite werden mit Sorgfalt erstellt; für Richtigkeit, Vollständigkeit und Aktualität wird jedoch keine Gewähr übernommen. Externe Links führen zu Seiten Dritter, auf deren Inhalte ich keinen Einfluss habe.",
+            "Die Inhalte dieser Seite werden mit Sorgfalt erstellt. Für Richtigkeit, Vollständigkeit und Aktualität wird jedoch keine Gewähr übernommen. Externe Links führen zu Seiten Dritter, auf deren Inhalte ich keinen Einfluss habe.",
           ],
         },
       ],
@@ -52,24 +47,31 @@ export const legal: Record<LegalKind, Record<Locale, LegalDoc>> = {
       title: "Privacy policy",
       updated: "2026-11",
       sections: [
-        { heading: "Controller", body: [`${site.name}, ${owner.address}, ${site.email}`] },
+        { heading: "Responsible for this site", body: [`${site.name}, ${site.email}`] },
         {
-          heading: "Contact form",
+          heading: "Contact form: what is collected",
           body: [
-            "If you use the contact form, I process your name, email address and message to answer your request (Art. 6(1)(b) and (f) GDPR). The data is not used for any other purpose and not passed on, except to the email delivery provider below.",
-            "Data is kept as long as needed to handle your request and for follow-up questions, then deleted.",
+            "When you send the contact form, the following data is transmitted: your name, your email address and your message. A hidden anti-spam field is also sent; it is normally empty.",
+            "The data is used only to answer your request. It is not used for marketing and not shared with anyone other than the services named below.",
           ],
         },
         {
-          heading: "Email delivery (Resend)",
+          heading: "How it is processed",
           body: [
-            "Messages are forwarded to my inbox through Resend, which may process data outside the EU/EEA. Transfers rely on appropriate safeguards such as standard contractual clauses.",
+            "The site's server validates the form and passes the message to the email service Resend (Resend, Inc., USA), which delivers it to my email inbox. Resend may process the data outside the EU/EEA. The message itself is not saved in a database on this site, and its contents are not written to server logs.",
+            "To limit abuse, the server keeps your IP address in temporary memory for up to 10 minutes to count requests. It is not saved permanently.",
           ],
         },
         {
-          heading: "Hosting & server logs",
+          heading: "Storage and retention",
           body: [
-            "[TODO: name your hosting provider and region.] The host may process technical data (IP address, time, requested page) in server logs for security and operation.",
+            "Your message is kept in my email inbox (Gmail, provided by Google) for as long as needed to handle your request and any follow-up questions, and then deleted. Resend keeps its own records of sent emails according to its privacy policy (resend.com/legal/privacy-policy).",
+          ],
+        },
+        {
+          heading: "Hosting",
+          body: [
+            "This site is hosted by Vercel (Vercel Inc., USA). When you visit a page, Vercel may process technical data such as your IP address, the time of the request and the requested page in server logs for operation and security.",
           ],
         },
         {
@@ -79,9 +81,9 @@ export const legal: Record<LegalKind, Record<Locale, LegalDoc>> = {
           ],
         },
         {
-          heading: "Your rights",
+          heading: "Your requests",
           body: [
-            "You have the right to access, rectification, erasure, restriction, portability and objection. Contact me by email. You may also complain to the Austrian Data Protection Authority (Datenschutzbehörde, dsb.gv.at).",
+            "You can contact me by email to see or delete the messages I have received from you.",
           ],
         },
       ],
@@ -90,24 +92,31 @@ export const legal: Record<LegalKind, Record<Locale, LegalDoc>> = {
       title: "Datenschutzerklärung",
       updated: "2026-11",
       sections: [
-        { heading: "Verantwortlicher", body: [`${site.name}, ${owner.address}, ${site.email}`] },
+        { heading: "Verantwortlich für diese Seite", body: [`${site.name}, ${site.email}`] },
         {
-          heading: "Kontaktformular",
+          heading: "Kontaktformular: welche Daten erfasst werden",
           body: [
-            "Wenn du das Kontaktformular nutzt, verarbeite ich Name, E-Mail-Adresse und Nachricht zur Beantwortung deiner Anfrage (Art. 6 Abs. 1 lit. b und f DSGVO). Die Daten werden nicht anderweitig verwendet und nicht weitergegeben, außer an den unten genannten E-Mail-Dienstleister.",
-            "Die Daten werden so lange gespeichert, wie es zur Bearbeitung und für Rückfragen nötig ist, und danach gelöscht.",
+            "Wenn Sie das Kontaktformular senden, werden folgende Daten übermittelt: Ihr Name, Ihre E-Mail-Adresse und Ihre Nachricht. Außerdem wird ein verstecktes Anti-Spam-Feld gesendet, das normalerweise leer ist.",
+            "Die Daten werden nur zur Beantwortung Ihrer Anfrage verwendet. Sie werden nicht für Werbung genutzt und nur an die unten genannten Dienste weitergegeben.",
           ],
         },
         {
-          heading: "E-Mail-Versand (Resend)",
+          heading: "Verarbeitung",
           body: [
-            "Nachrichten werden über Resend in mein Postfach weitergeleitet; dabei kann eine Verarbeitung außerhalb der EU/des EWR stattfinden. Übermittlungen stützen sich auf geeignete Garantien wie Standardvertragsklauseln.",
+            "Der Server dieser Seite prüft das Formular und übergibt die Nachricht an den E-Mail-Dienst Resend (Resend, Inc., USA), der sie in mein E-Mail-Postfach zustellt. Resend kann die Daten außerhalb der EU/des EWR verarbeiten. Die Nachricht wird auf dieser Seite nicht in einer Datenbank gespeichert, und ihr Inhalt wird nicht in Server-Logs geschrieben.",
+            "Zum Schutz vor Missbrauch hält der Server Ihre IP-Adresse bis zu 10 Minuten im Arbeitsspeicher, um Anfragen zu zählen. Sie wird nicht dauerhaft gespeichert.",
           ],
         },
         {
-          heading: "Hosting & Server-Logs",
+          heading: "Speicherdauer",
           body: [
-            "[TODO: Hosting-Anbieter und Region nennen.] Der Hoster kann technische Daten (IP-Adresse, Zeitpunkt, aufgerufene Seite) in Server-Logs zur Sicherheit und für den Betrieb verarbeiten.",
+            "Ihre Nachricht bleibt in meinem E-Mail-Postfach (Gmail, Anbieter Google), solange es für die Bearbeitung Ihrer Anfrage und für Rückfragen nötig ist, und wird danach gelöscht. Resend speichert eigene Aufzeichnungen über gesendete E-Mails gemäß seiner Datenschutzerklärung (resend.com/legal/privacy-policy).",
+          ],
+        },
+        {
+          heading: "Hosting",
+          body: [
+            "Diese Seite wird von Vercel (Vercel Inc., USA) gehostet. Beim Aufruf einer Seite kann Vercel technische Daten wie IP-Adresse, Zeitpunkt der Anfrage und aufgerufene Seite in Server-Logs für Betrieb und Sicherheit verarbeiten.",
           ],
         },
         {
@@ -117,9 +126,9 @@ export const legal: Record<LegalKind, Record<Locale, LegalDoc>> = {
           ],
         },
         {
-          heading: "Deine Rechte",
+          heading: "Ihre Anfragen",
           body: [
-            "Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch. Schreib mir dazu eine E-Mail. Beschwerden kannst du auch an die österreichische Datenschutzbehörde (dsb.gv.at) richten.",
+            "Sie können mich per E-Mail kontaktieren, um die von Ihnen erhaltenen Nachrichten einzusehen oder löschen zu lassen.",
           ],
         },
       ],

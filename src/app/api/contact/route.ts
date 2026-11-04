@@ -16,7 +16,9 @@ export type ContactResponse =
   | { ok: true }
   | { ok: false; code: "validation" | "rate_limited" | "server"; fields?: ContactField[] };
 
-// Best-effort in-memory limiter (per server instance). Use Redis/Upstash for multi-instance deployments.
+// Best-effort, instance-local rate limiter. Limitations: state lives in the memory of a single
+// serverless instance, so it resets on cold starts and is not shared between concurrent instances.
+// It slows down casual abuse only; a shared store (e.g. Redis) would be needed for a hard limit.
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_REQUESTS = 5;
 const hits = new Map<string, number[]>();
@@ -43,7 +45,8 @@ export async function POST(request: NextRequest) {
     return json({ ok: false, code: "server" }, 403);
   }
 
-  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  // Set by Vercel's edge and not spoofable by the client. Locally it is absent, so all requests share one bucket.
+  const ip = request.headers.get("x-vercel-forwarded-for")?.split(",")[0]?.trim() || "unknown";
   if (isRateLimited(ip)) return json({ ok: false, code: "rate_limited" }, 429);
 
   let payload: unknown;
@@ -65,11 +68,12 @@ export async function POST(request: NextRequest) {
 
   const { name, email, message } = parsed.data;
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_TO_EMAIL ?? site.email;
+  const to = process.env.CONTACT_TO_EMAIL || site.email;
 
+  // Never report success without a delivery attempt. Logs must not contain form data.
   if (!apiKey) {
-    console.info("[contact] RESEND_API_KEY not set — message logged only:", { name, email, message });
-    return json({ ok: true }, 200);
+    console.error("[contact] RESEND_API_KEY is not configured");
+    return json({ ok: false, code: "server" }, 503);
   }
 
   try {
@@ -77,7 +81,7 @@ export async function POST(request: NextRequest) {
       method: "POST",
       headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        from: process.env.CONTACT_FROM_EMAIL ?? "Portfolio <onboarding@resend.dev>",
+        from: process.env.CONTACT_FROM_EMAIL || "Portfolio <onboarding@resend.dev>",
         to: [to],
         reply_to: email,
         subject: `Portfolio contact from ${name}`,
@@ -90,7 +94,7 @@ export async function POST(request: NextRequest) {
     }
     return json({ ok: true }, 200);
   } catch (error) {
-    console.error("[contact] send failed", error);
+    console.error("[contact] send failed", error instanceof Error ? error.name : "unknown error");
     return json({ ok: false, code: "server" }, 500);
   }
 }

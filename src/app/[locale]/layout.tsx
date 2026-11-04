@@ -8,7 +8,6 @@ import { getDictionary } from "@/i18n/dictionaries";
 import { site } from "@/content/site";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { SmoothScroll } from "@/components/SmoothScroll";
 
 // next/font downloads and self-hosts these fonts at build time (no runtime requests to Google).
 const sans = Manrope({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
@@ -56,7 +55,6 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         >
           {dict.nav.skip}
         </a>
-        <SmoothScroll />
         <Navbar locale={locale} dict={dict} />
         <main id="main">{children}</main>
         <Footer locale={locale} dict={dict} />
